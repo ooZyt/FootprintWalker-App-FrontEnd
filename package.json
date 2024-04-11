@@ -1,0 +1,22 @@
+{
+  "name": "daydream-travel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/millet0328/Daydream-Travel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/millet0328/Daydream-Travel/issues"
+  },
+  "homepage": "https://github.com/millet0328/Daydream-Travel#readme",
+  "dependencies": {
+    "miniprogram-sm-crypto": "^0.3.13"
+  }
+}

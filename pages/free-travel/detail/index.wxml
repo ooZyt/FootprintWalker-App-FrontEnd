@@ -1,0 +1,117 @@
+<!--pages/setout/detail/index.wxml-->
+<view class="container">
+  <!-- 轮播图 -->
+  <swiper indicator-dots="true" indicator-color="white">
+    <swiper-item>
+      <image src="../../../images/photo-3.png" class="slide-image" />
+    </swiper-item>
+    <swiper-item>
+      <image src="../../../images/photo-2.png" class="slide-image" />
+    </swiper-item>
+  </swiper>
+  <!-- 基本信息 -->
+  <view class="basic-info">
+    <view class="tag-box black">
+      <text class="tag">人文</text>
+      <text class="tag">宗教</text>
+      <text class="tag">文化</text>
+      <text class="tag">团建</text>
+    </view>
+    <view class="title black">沉浸式旅行学院 | 与陈浩武、丛日云共走两希文明·以色列之旅</view>
+    <view class="date-time grey">
+      <image class="icon-month" src="../../../icons/icon-rili.png"></image>
+      <text>2019.9.15-2019.9.23(10天8夜)</text>
+    </view>
+    <view class="advisor grey">
+      <image class="avatar" src="../../../images/avatar.jpeg"></image>
+      <view>
+        <view class="name">陈浩武</view>
+        <view class="sologan">博物 文化 博物 文化</view>
+      </view>
+    </view>
+    <view class="advisor-message relative">
+      <image class="triangle" src="../../../images/triangle.png"></image>
+      <view class="shadow">
+        <view class="message">
+          <rich-text nodes="{{advisorMsg}}"></rich-text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 选项卡 -->
+  <!-- 导航 -->
+  <view class='tab-title'>
+    <scroll-view scroll-x="true" scroll-left="{{scrollLeft}}">
+      <view class='scroll-x'>
+        <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">
+          行程安排
+        </view>
+        <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">
+          游轮介绍
+        </view>
+        <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">
+          岸上观光
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="tab-content">
+    <view class="schedule black">
+      <view class="title">行程安排</view>
+      <view class="tree">
+        <view class="li">
+          <view class="name-box">
+            <view class="icon-calendar">
+              <image src="../../../icons/icon-calendar.png"></image>
+            </view>
+            <text class="name">DAY1：前往东京</text>
+          </view>
+          <view class="date-box">
+            <view class="icon-date">
+              <text class="iconfont icon-shikebiao"></text>
+            </view>
+            <text class="date">9.25</text>
+          </view>
+          <view class="content-box">
+            在日本国宝级导师的指导下，零距离学习三日味禅课程，感受自然阴阳，通过料理和饮食方式疗愈自身。 【味禅导师：野口清美】 野口老师是樱泽如一先生的第三代大弟子，擅长食养料理，阴阳理念的讲解，以及自然疗法，对大自然心怀感激，致力于食养料理的研究，在日本推广自然平衡饮食（Macrobiotic）理念。对健康的日益关心还促使她学习了东洋医学以及顺势疗法，并且获得了日本和英国顺势疗法医学协会的认证资格。
+            <image mode="aspectFit" src="../../../images/photo-1.png"></image>
+          </view>
+        </view>
+        <view class="li">
+          <view class="name-box">
+            <view class="icon-calendar">
+              <image src="../../../icons/icon-calendar.png"></image>
+            </view>
+            <text class="name">DAY2：出发！由布院之森</text>
+          </view>
+          <view class="date-box">
+            <view class="icon-date">
+              <text class="iconfont icon-shikebiao"></text>
+            </view>
+            <text class="date">9.26</text>
+          </view>
+          <view class="content-box">
+            在日本国宝级导师的指导下，零距离学习三日味禅课程，感受自然阴阳，通过料理和饮食方式疗愈自身。 【味禅导师：野口清美】 野口老师是樱泽如一先生的第三代大弟子，擅长食养料理，阴阳理念的讲解，以及自然疗法，对大自然心怀感激，致力于食养料理的研究，在日本推广自然平衡饮食（Macrobiotic）理念。对健康的日益关心还促使她学习了东洋医学以及顺势疗法，并且获得了日本和英国顺势疗法医学协会的认证资格。
+            <image mode="aspectFit" src="../../../images/photo-1.png"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 底部工具 -->
+  <view class="bottom-bar">
+    <view>
+      <text class="iconfont icon-xiaoxi"></text>
+      <view class="grey">客服</view>
+    </view>
+    <view>
+      <text class="iconfont icon-fenxiang"></text>
+      <view class="grey">分享</view>
+    </view>
+    <view>
+      <text class="iconfont icon-shoucang1"></text>
+      <view class="grey">收藏</view>
+    </view>
+    <button class="btn" type="primary">立即报名</button>
+  </view>
+</view>

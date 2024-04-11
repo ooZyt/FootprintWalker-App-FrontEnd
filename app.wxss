@@ -1,0 +1,40 @@
+/**app.wxss**/
+
+.black {
+  color: #333;
+}
+
+.white {
+  color: white;
+}
+
+.grey {
+  color: #666;
+}
+
+.yellow {
+  color: #ffd11b;
+}
+
+.blue {
+  color: #4a90ce;
+}
+
+.bg-grey {
+  background-color: #f8f8f8;
+}
+
+.bg-blue {
+  background-color: #4a90ce;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+.relative {
+  position: relative;
+}
+
+/* 字体图标 */
+@import "fonts/iconfont.wxss";
