@@ -2,24 +2,47 @@
   padding: 20px;
 }
 
-.activity-info {
-  margin-bottom: 20px;
+.activity-card {
+  display: flex;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 10px;
 }
 
 .activity-image {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 4px;
+  margin-right: 10px;
+}
+
+.activity-details {
+  flex: 1;
 }
 
 .activity-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
+  display: block; /* 添加 display 属性 */
+}
+
+.activity-description {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+  display: block; /* 添加 display 属性 */
+}
+
+.activity-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .activity-time {
-  font-size: 14px;
-  color: #666;
+  font-size: 12px;
+  color: #999;
 }
 
 .feedback-input {
@@ -28,7 +51,7 @@
 
 .feedback-title,
 .feedback-content {
-  width: 100%;
+  width: 94%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -42,4 +65,16 @@
   border: none;
   border-radius: 4px;
   font-size: 16px;
+}
+
+.star {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px; /* 为星星之间增加一些间距 */
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px; /* 增大星星和反馈标题中间的间距 */
 }

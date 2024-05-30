@@ -10,7 +10,10 @@
     "pages/team-travel/list/index",
     "pages/demand/add/index",
     "pages/feedback/activity-feedbacks/index",
-    "pages/feedback/input-activity-feedback/index"
+    "pages/feedback/input-activity-feedback/index",
+    "pages/feedback/club-feedback/index",
+    "pages/feedback/my-feedback/index",
+    "pages/feedback/feedback-detail/index"
   ],
   "tabBar": {
     "color": "#E8D8FD",

@@ -1,0 +1,61 @@
+<view class="container">
+  <!-- Search bar and filter options -->
+  <view class="search-container">
+    <input class="search-input" placeholder="请输入关键词，如“千岛湖”"/>
+    <button class="search-button">搜索</button>
+  </view>
+  <!-- Filter options -->
+  <view class="filter-container">
+    <button class="filter-button" bindtap="gotoActivityFeedback">活动反馈</button>
+    <button class="filter-button" bindtap="gotoClubFeedback">社团反馈</button>
+    <button class="filter-button active">我的反馈</button>
+  </view>
+
+  <!-- Feedback controls -->
+  <view class="feedback-controls">
+    <view class="filter-option" bindtap="toggleActivityFeedback">
+      <checkbox checked="{{feedbackType === 'activity'}}" color="#C5A1F7"></checkbox>
+      <text class="filter-text">活动反馈</text>
+    </view>
+    <view class="filter-option" bindtap="toggleClubFeedback">
+      <checkbox checked="{{feedbackType === 'club'}}" color="#C5A1F7"></checkbox>
+      <text class="filter-text">社团反馈</text>
+    </view>
+
+    <button class="order-button" bindtap="toggleOrder">{{orderButtonText}}</button>
+  </view>
+
+  <!-- Feedback list -->
+  <view class="feedback-list">
+    <block wx:if="{{feedbackType === 'activity'}}">
+      <block wx:for="{{activityFeedbacks}}" wx:key="id">
+        <view class="feedback-card">
+          <view class="feedback-header">
+            <text class="feedback-title">{{item.title}}</text>
+            <text class="feedback-status" style="color: {{item.status === 'processed' ? 'green' : 'red'}}">{{item.status === 'processed' ? '已处理' : '未处理'}}</text>
+          </view>
+          <text class="feedback-content">{{item.content.slice(0, 50)}}...</text>
+          <view class="feedback-footer">
+            <text class="feedback-time">{{item.time}}</text>
+            <button class="view-feedback-button" bindtap="viewFeedback" data-id="{{item.id}}">查看反馈处理</button>
+          </view>
+        </view>
+      </block>
+    </block>
+    <block wx:else>
+      <block wx:for="{{clubFeedbacks}}" wx:key="id">
+        <view class="feedback-card">
+          <view class="feedback-header">
+            <text class="feedback-title">{{item.title}}</text>
+            <text class="feedback-status" style="color: {{item.status === 'processed' ? 'green' : 'red'}}">{{item.status === 'processed' ? '已处理' : '未处理'}}</text>
+          </view>
+          <text class="feedback-content">{{item.content.slice(0, 50)}}...</text>
+          <view class="feedback-footer">
+            <text class="feedback-time">{{item.time}}</text>
+            <button class="view-feedback-button" bindtap="viewFeedback" data-id="{{item.id}}">查看反馈处理</button>
+          </view>
+        </view>
+      </block>
+    </block>
+  </view>
+</view>
