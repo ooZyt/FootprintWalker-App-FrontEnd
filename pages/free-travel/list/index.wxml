@@ -1,31 +1,16 @@
 <!--pages/setout/list/index.wxml-->
 <view class="container {{showModal?'freeze':''}}">
-  <!-- 导航 -->
-  <view class='tab-title white'>
-    <scroll-view scroll-x="true" scroll-left="{{scrollLeft}}">
-      <view class="tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="swichNav">
-        航线精选
-      </view>
-      <view class="tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="swichNav">
-        阿拉斯加
-      </view>
-      <view class="tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="swichNav">
-        加勒比海
-      </view>
-      <view class="tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="swichNav">
-        澳新
-      </view>
-      <view class="tab-item {{currentTab==4?'active':''}}" data-current="4" bindtap="swichNav">
-        澳新
-      </view>
-      <view class="tab-item {{currentTab==5?'active':''}}" data-current="5" bindtap="swichNav">
-        澳新
-      </view>
-      <view class="tab-item {{currentTab==6?'active':''}}" data-current="6" bindtap="swichNav">
-        澳新
-      </view>
-    </scroll-view>
-    <text catchtap="showSearchModal" class="iconfont icon-sousuoxiao"></text>
+  <!-- Search bar -->
+  <view class="search-container">
+    <input class="search-input" placeholder="请输入关键词，如“千岛湖”"/>
+    <button class="search-button">搜索</button>
+  </view>
+
+  <!-- Filter options -->
+  <view class="filter-container">
+    <button class="filter-button active">正在进行</button>
+    <button class="filter-button">往期活动</button>
+    <button class="filter-button">活动预告</button>
   </view>
   <!-- 列表 -->
   <view class="tab-content">
@@ -33,16 +18,16 @@
       <view class="li">
         <navigator url="../detail/index">
           <view class="photo relative">
-            <view class="tag">定制</view>
-            <image mode="aspectFill" src="../../../images/photo-2.png"></image>
+            <view class="tag">可报名</view>
+            <image mode="aspectFill" src="../../../images/activity.png"></image>
             <text class="start-time white">8月23日出发</text>
           </view>
           <view class="title-box black">
-            <view class="title">美国 · 黑石城 | 火人节自驾之旅</view>
+            <view class="title">周末轰趴｜虽迟但到的千岛湖之约</view>
             <view class="info">
               <view>
-                <text>6天5夜</text> ·
-                <text>美国</text>
+                <text>2天1夜</text> ·
+                <text>浙江淳安县</text>
               </view>
               <view class="share">
                 <text class="iconfont icon-fenxiang1"></text> 356
@@ -54,16 +39,16 @@
       <view class="li">
         <navigator url="../detail/index">
           <view class="photo relative">
-            <view class="tag">定制</view>
+            <view class="tag">可报名</view>
             <image mode="aspectFill" src="../../../images/photo-2.png"></image>
             <text class="start-time white">8月23日出发</text>
           </view>
           <view class="title-box black">
-            <view class="title">美国 · 黑石城 | 火人节自驾之旅</view>
+            <view class="title">探秘紫金山 | 徒步周末之旅 🏞️🥾</view>
             <view class="info">
               <view>
-                <text>6天5夜</text> ·
-                <text>美国</text>
+                <text>1天</text> ·
+                <text>紫金山</text>
               </view>
               <view class="share">
                 <text class="iconfont icon-fenxiang1"></text> 356

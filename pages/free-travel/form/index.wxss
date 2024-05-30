@@ -1,0 +1,47 @@
+/* pages/free-travel/form/index.wxss */
+.container {
+  padding: 20px;
+}
+
+.title {
+  margin: 20px 0; /* 调整上下间距 */
+  font-size: 2em; /* 增大字体 */
+  font-weight: bold; /* 保持字体加粗 */
+  text-align: center; /* 居中对齐 */
+  padding: 10px; /* 增加内边距以适应不同屏幕尺寸 */
+}
+
+.form-item {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.form-radio-group {
+  display: flex;
+}
+
+.form-radio-label {
+  flex: 1;
+}
+
+
+.form-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #C5A1F7;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+}

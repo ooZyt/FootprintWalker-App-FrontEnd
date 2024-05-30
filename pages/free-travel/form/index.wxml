@@ -1,0 +1,27 @@
+<!-- pages/free-travel/form/index.wxml -->
+<view class="container">
+  <view class="title">活动报名</view>
+  <view class="form-item">
+    <text class="form-label">学号</text>
+    <input class="form-input" type="text" placeholder="请输入学号" data-field="studentID" bindinput="handleInput" />
+  </view>
+  <view class="form-item">
+    <text class="form-label">姓名</text>
+    <input class="form-input" type="text" placeholder="请输入姓名" data-field="name" bindinput="handleInput" />
+  </view>
+  <view class="form-item">
+  <text class="form-label">请选择性别</text>
+    <radio-group class="form-radio-group" bindchange="handleRadioChange">
+      <label class="form-radio-label">
+        <radio value="male" checked="{{selectedGender === 'male'}}">男</radio>
+      </label>
+      <label class="form-radio-label">
+        <radio value="female" checked="{{selectedGender === 'female'}}">女</radio>
+      </label>
+    </radio-group></view>
+  <view class="form-item">
+    <text class="form-label">邮箱</text>
+    <input class="form-input" type="email" placeholder="请输入电子邮箱" data-field="contact" bindinput="handleInput" />
+  </view>
+  <button class="form-button" bindtap="handleSubmit">提交</button>
+</view>
