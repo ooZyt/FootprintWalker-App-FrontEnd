@@ -1,0 +1,45 @@
+.container {
+  padding: 20px;
+}
+
+.activity-info {
+  margin-bottom: 20px;
+}
+
+.activity-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+}
+
+.activity-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.activity-time {
+  font-size: 14px;
+  color: #666;
+}
+
+.feedback-input {
+  margin-top: 20px;
+}
+
+.feedback-title,
+.feedback-content {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  background-color: #C5A1F7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}

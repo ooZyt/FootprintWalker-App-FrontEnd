@@ -1,7 +1,7 @@
 {
   "name": "daydream-travel",
   "version": "1.0.0",
-  "description": "",
+  "description": "足迹行者旅游社团微信小程序端前端",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

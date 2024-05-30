@@ -1,0 +1,44 @@
+<view class="container">
+  <!-- Header -->
+  <!-- <view class="header">
+    <button class="home-button" bindtap="goHome">🏠</button>
+    <text class="title">足迹行者</text>
+  </view> -->
+
+  <!-- Search bar -->
+  <view class="search-container">
+    <input class="search-input" placeholder="请输入关键词，如“千岛湖”"/>
+    <button class="search-button">搜索</button>
+  </view>
+
+  <!-- Filter options -->
+  <view class="filter-container">
+    <button class="filter-button active">活动反馈</button>
+    <button class="filter-button">社团反馈</button>
+    <button class="filter-button">我的反馈</button>
+  </view>
+
+  <!-- Activity feedback controls -->
+  <view class="activity-controls">
+    <switch bindchange="toggleMyActivities" color="#C5A1F7"/> <!-- 调整开关按钮的颜色为紫色 -->
+    <text>只查看我参与的活动</text>
+    <button class="order-button" bindtap="toggleOrder">按时间排序</button> <!-- 调整按钮文字 -->
+  </view>
+
+  <!-- Activity list -->
+  <view class="activity-list">
+    <block wx:for="{{activities}}" wx:key="id">
+      <view class="activity-card">
+        <image class="activity-image" src="{{item.image}}"></image>
+        <view class="activity-details">
+          <text class="activity-title">{{item.title}}</text>
+          <text class="activity-description">{{item.description}}</text>
+          <view class="activity-footer">
+            <text class="activity-time">{{item.time}}</text>
+            <button class="feedback-button" bindtap="gotoFeedback" data-id="{{item.id}}">我要反馈</button>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

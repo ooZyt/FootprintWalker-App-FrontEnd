@@ -8,11 +8,13 @@
     "pages/story/comment/index",
     "pages/free-travel/detail/index",
     "pages/team-travel/list/index",
-    "pages/demand/add/index"
+    "pages/demand/add/index",
+    "pages/feedback/activity-feedbacks/index",
+    "pages/feedback/input-activity-feedback/index"
   ],
   "tabBar": {
-    "color": "#98d4ef",
-    "backgroundColor": "#30a9de",
+    "color": "#E8D8FD",
+    "backgroundColor": "#C5A1F7",
     "selectedColor": "#FFFFFF",
     "list": [
       {
@@ -34,8 +36,8 @@
         "selectedIconPath": "icons/tab-bar-plus-active.png"
       },
       {
-        "text": "跟团游",
-        "pagePath": "pages/team-travel/list/index",
+        "text": "反馈",
+        "pagePath": "pages/feedback/activity-feedbacks/index",
         "iconPath": "icons/icon-flag.png",
         "selectedIconPath": "icons/icon-flag-active.png"
       },
@@ -48,7 +50,7 @@
     ]
   },
   "window": {
-    "navigationBarBackgroundColor": "#30a9de",
+    "navigationBarBackgroundColor": "#C5A1F7",
     "navigationBarTitleText": "漫妮旅行"
   },
   "sitemapLocation": "sitemap.json"

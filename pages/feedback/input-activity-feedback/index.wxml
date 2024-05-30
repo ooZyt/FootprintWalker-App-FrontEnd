@@ -1,0 +1,17 @@
+<view class="container">
+  <view class="activity-info">
+    <!-- 在这里显示点击的活动卡片信息 -->
+    <image class="activity-image" src="{{activity.image}}"></image>
+    <text class="activity-title">{{activity.title}}</text>
+    <text class="activity-time">{{activity.time}}</text>
+  </view>
+  <view class="feedback-input">
+    <view class="rating">
+      <!-- 显示评分控件 -->
+      <!-- 这里放置评分的星星控件 -->
+    </view>
+    <input class="feedback-title" placeholder="反馈标题"/>
+    <textarea class="feedback-content" placeholder="反馈内容"></textarea>
+    <button class="submit-button" bindtap="submitFeedback">提交</button>
+  </view>
+</view>
