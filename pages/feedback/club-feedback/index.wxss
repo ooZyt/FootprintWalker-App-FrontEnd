@@ -1,0 +1,47 @@
+/* pages/feedback/club-feedback/index.wxss */
+.container {
+  padding: 20px;
+}
+
+.club-info {
+  display: flex;
+  /* align-items: center; */
+  align-items: flex-start; /* 确保所有子元素顶部对齐 */
+  margin-bottom: 20px;
+}
+
+.club-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 20%;
+  margin-right: 20px;
+}
+
+.club-description {
+  margin-top: 5px;
+  flex: 1;
+  font-size: 15px;
+}
+
+.feedback-input {
+  margin-top: 20px;
+}
+
+.feedback-title,
+.feedback-content {
+  width: 93%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #C5A1F7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+}

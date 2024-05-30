@@ -1,0 +1,15 @@
+<!-- pages/feedback/club-feedback/index.wxml -->
+<view class="container">
+  <!-- Club info -->
+  <view class="club-info">
+    <image class="club-avatar" src="{{club.avatar}}"></image>
+    <text class="club-description">{{club.description}}</text>
+  </view>
+
+  <!-- Feedback input -->
+  <view class="feedback-input">
+    <input class="feedback-title" placeholder="反馈标题"/>
+    <textarea class="feedback-content" placeholder="反馈内容"></textarea>
+    <button class="submit-button" bindtap="submitFeedback">提交</button>
+  </view>
+</view>
