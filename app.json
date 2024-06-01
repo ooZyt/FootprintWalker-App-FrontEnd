@@ -1,17 +1,20 @@
 {
   "pages": [
+    "pages/story/list/index",
     "pages/free-travel/list/index",
     "pages/user/center/index",
     "pages/user/join/index",
-    "pages/story/list/index",
     "pages/story/detail/index",
     "pages/story/comment/index",
     "pages/free-travel/detail/index",
+    "pages/free-travel/form/index",
     "pages/team-travel/list/index",
     "pages/demand/add/index",
     "pages/feedback/activity-feedbacks/index",
     "pages/feedback/input-activity-feedback/index",
-    "pages/home/list/index"
+    "pages/feedback/club-feedback/index",
+    "pages/feedback/my-feedback/index",
+    "pages/feedback/feedback-detail/index"
   ],
   "tabBar": {
     "color": "#E8D8FD",
@@ -20,12 +23,12 @@
     "list": [
       {
         "text": "首页",
-        "pagePath": "pages/home/list/index",
+        "pagePath": "pages/story/list/index",
         "iconPath": "icons/icon-book.png",
         "selectedIconPath": "icons/icon-book-active.png"
       },
       {
-        "text": "自由行",
+        "text": "活动",
         "pagePath": "pages/free-travel/list/index",
         "iconPath": "icons/icon-trunk.png",
         "selectedIconPath": "icons/icon-trunk-active.png"
@@ -52,7 +55,7 @@
   },
   "window": {
     "navigationBarBackgroundColor": "#C5A1F7",
-    "navigationBarTitleText": "漫妮旅行"
+    "navigationBarTitleText": "足迹行者"
   },
   "sitemapLocation": "sitemap.json"
 }

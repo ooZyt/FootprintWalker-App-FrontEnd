@@ -1,5 +1,51 @@
 /* pages/setout/list/index.wxss */
+.search-container {
+  display: flex;
+  margin: 10px 0;
+}
 
+.search-input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #C5A1F7;
+  border-radius: 4px;
+}
+.search-button {
+  padding: 6px 12px; /* 调整按钮大小 */
+  background-color: #C5A1F7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-left: 6px; /* 调整按钮间距 */
+  font-size: 12px; /* 调整按钮字体大小 */
+}
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid #ddd; /* 添加底部边框 */
+}
+
+.filter-button {
+  flex: 1; /* 将按钮设置为均分空间 */
+  padding: 8px 0;
+  background-color: white; /* 将按钮背景色设置为白色 */
+  color: #666; /* 将文字颜色设置为灰色 */
+  border: none;
+  border-right: 1px solid #ddd; /* 添加右边框 */
+  border-bottom: 3px solid transparent; /* 设置初始下方边框为透明 */
+  border-radius: 0; /* 取消按钮圆角 */
+  font-size: 14px;
+  text-align: center; /* 文字居中 */
+}
+
+/* 将选中的选项卡下方横线设置为紫色 */
+.filter-button.active {
+  color: #C5A1F7;
+  border-bottom-color: #C5A1F7;
+}
+.container {
+  padding: 10px;
+}
 .container.freeze {
   height: 100vh;
   overflow: hidden;

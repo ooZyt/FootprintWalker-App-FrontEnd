@@ -1,14 +1,23 @@
 <view class="container">
-  <view class="activity-info">
+  <view class="activity-card">
     <!-- 在这里显示点击的活动卡片信息 -->
     <image class="activity-image" src="{{activity.image}}"></image>
-    <text class="activity-title">{{activity.title}}</text>
-    <text class="activity-time">{{activity.time}}</text>
+    <view class="activity-details">
+          <text class="activity-title">{{activity.title}}</text>
+          <text class="activity-description">{{activity.description}}</text>
+          <view class="activity-footer">
+            <text class="activity-time">{{activity.time}}</text>
+          </view>
+        </view>
   </view>
   <view class="feedback-input">
     <view class="rating">
+      <text class="rating-label">我的评分：</text>
       <!-- 显示评分控件 -->
-      <!-- 这里放置评分的星星控件 -->
+      <block wx:for="{{5}}" wx:key="index">
+        <image class="star" src="{{index < currentRating ? '/images/star-filled.png' : '/images/star-empty.png'}}" bindtap="setRating" data-index="{{index}}" data-total="5"></image>
+      </block>
+      <text> {{currentRating}}</text>
     </view>
     <input class="feedback-title" placeholder="反馈标题"/>
     <textarea class="feedback-content" placeholder="反馈内容"></textarea>

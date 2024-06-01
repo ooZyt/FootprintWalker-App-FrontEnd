@@ -14,15 +14,15 @@
   <!-- Filter options -->
   <view class="filter-container">
     <button class="filter-button active">活动反馈</button>
-    <button class="filter-button">社团反馈</button>
-    <button class="filter-button">我的反馈</button>
+    <button class="filter-button" bindtap="gotoClubFeedback">社团反馈</button>
+    <button class="filter-button" bindtap="gotoMyFeedback">我的反馈</button>
   </view>
 
-  <!-- Activity feedback controls -->
+  <!-- Activity controls -->
   <view class="activity-controls">
     <switch bindchange="toggleMyActivities" color="#C5A1F7"/> <!-- 调整开关按钮的颜色为紫色 -->
     <text>只查看我参与的活动</text>
-    <button class="order-button" bindtap="toggleOrder">按时间排序</button> <!-- 调整按钮文字 -->
+    <button class="order-button" bindtap="toggleOrder">{{sortButtonText}}</button> <!-- 动态设置按钮文字 -->
   </view>
 
   <!-- Activity list -->
