@@ -8,66 +8,36 @@
   <!--社团宣传-->
   <view class="joinUs">
 <view class="joinUsTag">
-  <text>关于我们</text>
-</view>
-<view class="joinUsTag">
-  <text>加入我们</text>
+    <button class="joinUsButton">--关于 我们--</button>
+    <button class="joinUsButton">--加入 我们--</button>
 </view>
   </view>
-
   <!-- 列表 -->
-  <view class="list">
-    <view class="li">
-      <navigator url="../detail/index">
-        <view class="photo relative">
-          <image mode="aspectFill" src="../../../images/photo-1.png"></image>
-          <view class="title white">
-            <text class="author">冯静</text>
-            <text> / </text>
-            <text>旅居日本17年，华人妈妈打造不一样的亲子之旅</text>
-          </view>
-        </view>
-      </navigator>
-      <view class="footer">
-        <view class="tag-box">
-          <text class="tag">境外游</text>
-          <text class="tag">瑜伽</text>
-          <text class="tag">民宿</text>
-        </view>
-        <view class="share">
-          <text class="iconfont icon-fenxiang1"></text> 356
-        </view>
-        <view class="like">
-          <text class="iconfont icon-zan1"></text> 2156
-        </view>
+  <text class="popular-activity">热门活动</text>
+  <view class="activity-list">
+  <block wx:for="{{activities}}" wx:key="id">
+    <view class="activity-card">
+      <!-- 根据id奇偶性决定 image 和 text 的顺序 -->
+      <view wx:if="{{item.id % 2 === 1}}" class="activity-image-wrapper">
+        <image class="activity-image" src="{{item.image}}"></image>
       </view>
-    </view>
-    <view class="li">
-      <navigator url="../detail/index">
-        <view class="photo relative">
-          <image mode="aspectFill" src="../../../images/photo-1.png"></image>
-          <view class="title white">
-            <text class="author">冯静</text>
-            <text> / </text>
-            <text>旅居日本17年，华人妈妈打造不一样的亲子之旅</text>
-          </view>
-        </view>
-      </navigator>
-      <view class="footer">
-        <view class="tag-box">
-          <text class="tag">境外游</text>
-          <text class="tag">瑜伽</text>
-          <text class="tag">民宿</text>
-        </view>
-        <view class="share">
-          <text class="iconfont icon-fenxiang1"></text> 356
-        </view>
-        <view class="like">
-          <text class="iconfont icon-zan1"></text> 2156
-        </view>
+      <view class="activity-details">
+        <text class="activity-title">{{item.title}}</text>
+        <text class="activity-description">{{item.description}}</text>
+        <view class="activity-footer">
+        <text class="activity-time">{{item.time}}</text>
+        <button class="detail_info" bindtap="gotoDetail" data-id="{{item.id}}">详细信息</button>
       </view>
+      </view>
+      
+      <view wx:if="{{item.id % 2 === 0}}" class="activity-image-wrapper">
+        <image class="activity-image" src="{{item.image}}"></image>
+      </view>
+
     </view>
-  </view>
+  </block>
+</view>
+  <text class="popular-activity">往期活动</text>
     <!-- 轮播图 -->
     <view class="swiper-container">
     <swiper indicator-dots indicator-color="rgba(255,255,255,0.4)" indicator-active-color="#ffd11b" autoplay>

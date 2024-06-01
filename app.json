@@ -14,7 +14,8 @@
     "pages/feedback/club-feedback/index",
     "pages/feedback/my-feedback/index",
     "pages/feedback/feedback-detail/index",
-    "pages/home/list/index"
+    "pages/home/list/index",
+    "pages/home/detail/detail"
   ],
   "tabBar": {
     "color": "#E8D8FD",

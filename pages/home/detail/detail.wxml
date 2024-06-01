@@ -1,0 +1,92 @@
+<!--pages/home/detail/detail.wxml-->
+<!-- 基本信息 -->
+
+  <!-- 轮播图 -->
+  <swiper indicator-dots="true" indicator-color="white">
+    <swiper-item>
+      <image src="../../../images/activity.png" class="slide-image" />
+    </swiper-item>
+    <swiper-item>
+      <image src="../../../images/photo-2.png" class="slide-image" />
+    </swiper-item>
+  </swiper>
+<!-- 基本信息 -->
+<view class="basic-info">
+  <view class="tag-box black">
+    <block wx:for="{{tags}}" wx:key="index">
+      <text class="tag">{{item}}</text>
+    </block>
+  </view>
+  <view class="title black">{{title}}</view>
+  <view class="date-time grey">
+    <image class="icon-month" src="../../../icons/icon-rili.png"></image>
+    <text>{{dateTime}}</text>
+  </view>
+  <view class="advisor grey">
+    <image class="avatar" src="{{advisor.avatar}}"></image>
+    <view>
+      <view class="name">{{advisor.name}}</view>
+      <view class="sologan">{{advisor.slogan}}</view>
+    </view>
+  </view>
+  <view class="advisor-message relative">
+    <image class="triangle" src="../../../images/triangle.png"></image>
+    <view class="shadow">
+      <view class="message">
+        <rich-text nodes="{{advisorMsg}}"></rich-text>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 选项卡 -->
+<!-- 导航 -->
+<view class='tab-title'>
+  <scroll-view scroll-x="true" scroll-left="{{scrollLeft}}">
+    <view class='scroll-x'>
+      <block wx:for="{{tabs}}" wx:key="index">
+        <view class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">
+          {{item}}
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</view>
+<view class="tab-content">
+  <view class="schedule black" wx:if="{{currentTab==0}}">
+    <view class="title">行程安排</view>
+    <view class="tree">
+      <block wx:for="{{schedule}}" wx:key="index">
+        <view class="li">
+          <view class="name-box">
+            <view class="icon-calendar">
+              <image src="../../../icons/icon-calendar.png"></image>
+            </view>
+            <text class="name">{{item.day}}</text>
+          </view>
+          <view class="date-box">
+            <view class="icon-date">
+              <text class="iconfont icon-shikebiao"></text>
+            </view>
+            <text class="date">{{item.date}}</text>
+          </view>
+          <view class="content-box">
+            {{item.content}}
+            <image mode="aspectFit" src="../../../images/photo-1.png"></image>
+          </view>
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="expenses" wx:if="{{currentTab==1}}">
+    <view class="title">活动费用</view>
+    <block wx:for="{{expenses}}" wx:key="index">
+      <view class="expense-item">
+        <text class="expense-item-text">{{item.item}}</text>
+        <text class="expense-item-cost">{{item.cost}}</text>
+      </view>
+    </block>
+    <view class="total">
+      <text>{{totalCost}}</text>
+    </view>
+  </view>
+</view>

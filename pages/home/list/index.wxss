@@ -1,10 +1,21 @@
 /* pages/home/list/index.wxss */
 /* pages/story/list/index.wxss */
-
+.container {
+    display: flex;
+    flex-direction: column;
+  }
+  /* 宣传海报样式 */
+  .poster {
+    width: 100%; /* 确保海报宽度铺满屏幕 */
+  }
+  
+  .poster-image {
+    width: 100%; /* 宽度铺满 */
+    height: 45ch;
+  }
 .swiper-container {
     
     background-size: 750rpx 364rpx;
-    padding-top: 204rpx;
   }
   
   swiper {
@@ -17,100 +28,99 @@
     width: 100%;
     height: 305rpx;
     border-radius: 15rpx;
+  }  
+  /* 社团宣传按钮样式 */
+  .joinUs {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
   }
   
+  .joinUsTag {
+    display: flex;
+    justify-content: space-around; /* 按钮之间保持间距 */
+  }
+  
+  .joinUsButton {
+    border: none;
+    outline: none;
+    background-color: #815aee; /* 按钮背景颜色 */
+    color: white;
+    border-radius: 50%; /* 圆角边框 */
+    width: 60px; /* 设置一个固定宽度，根据需要调整 */
+    height: 60px; /* 设置一个固定高度，与宽度相等 */
+    text-align: center; /* 文字居中 */
+    font-size: 10px;
+    padding: 10px; /* 内边距 */
+    margin: 10px 60px; /* 外边距 */
+  }
+  /* 热门活动文本样式 */
+  .popular-activity {
+    font-size: 18px; /* 字体大小 */
+    font-weight: bold; /* 字体加粗 */
+    color: #333; /* 字体颜色 */
+    margin: 20px 0; /* 上下边距 */
+    text-align: center; /* 文字居中 */
+    border: 1px solid #e1e1e1; /* 添加边框，颜色为浅灰色 */
+    padding: 10px; /* 内边距，使文本与边框保持一定距离 */
+    display: inline-block; /* 使边框包裹文本 */
+  }
+  /* 活动列表样式 */
+  .activity-list {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .activity-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    border: 1px solid #ccc; /* 边框 */
+    border-radius: 5px; /* 圆角边框 */
+    margin-bottom: 10px; /* 卡片之间的间距 */
+  }
+  
+  .activity-image {
+    width: 150px; /* 固定宽度 */
+    height: 100px;
+    margin-right: 10px; /* 与描述文字的间距 */
+  }
+  
+  .activity-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .activity-title {
+    font-size: 16px; /* 字体大小 */
+    font-weight: bold; /* 字体加粗 */
+  }
+  
+  .activity-description {
+    font-size: 14px; /* 字体大小 */
+    color: #666; /* 字体颜色 */
+  }
+  
+  .activity-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .activity-time {
+    font-size: 12px; /* 字体大小 */
+    color: #999; /* 字体颜色 */
+  }
+  
+  .detail_info {
+    border: none;
+    outline: none;
+    background-color: #C5A1F7; /* 按钮背景颜色 */
+    color: white;
+    font-size: 11px;
+    border-radius: 5px; /* 圆角边框 */
+    padding: 1px 5px; /* 内边距 */
+  }
   /* 列表 */
   
-  .list {
-    width: 90%;
-    margin: 30rpx auto;
-  }
-  
-  .list .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15rpx;
-    font-size: 20rpx;
-  }
-  
-  .list .li {
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.15);
-    border-radius: 8rpx;
-    overflow: hidden;
-    margin-bottom: 30rpx;
-  }
-  
-  .header .left {
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .header .avatar {
-    width: 40rpx;
-    height: 40rpx;
-    border-radius: 50%;
-  }
-  
-  .header .nickname {
-    margin: 0 20rpx;
-    font-size: 28rpx;
-  }
-  
-  .photo image {
-    width: 100%;
-    height: 420rpx;
-    display: block;
-  }
-  
-  .photo::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 50%;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-  }
-  
-  .photo .title {
-    position: absolute;
-    bottom: 0rpx;
-    left: 0rpx;
-    font-size: 32rpx;
-    z-index: 10;
-    padding: 30rpx 28rpx;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  
-  .footer {
-    padding: 20rpx;
-    background-color: white;
-    font-size: 24rpx;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .tag-box .tag {
-    padding: 8rpx 16rpx;
-    margin-right: 10rpx;
-    border-radius: 40rpx;
-    font-size: 24rpx;
-    display: inline-block;
-  }
-  
-  .tag-box .tag:nth-child(3n+1) {
-    background-color: #f4f3e5;
-  }
-  
-  .tag-box .tag:nth-child(3n+2) {
-    background-color: #e5f3f4;
-  }
-  
-  .tag-box .tag:nth-child(3n+3) {
-    background-color: #f2f2f2;
-  }
   
