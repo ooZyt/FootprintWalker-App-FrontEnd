@@ -10,7 +10,8 @@
     "pages/team-travel/list/index",
     "pages/demand/add/index",
     "pages/feedback/activity-feedbacks/index",
-    "pages/feedback/input-activity-feedback/index"
+    "pages/feedback/input-activity-feedback/index",
+    "pages/home/list/index"
   ],
   "tabBar": {
     "color": "#E8D8FD",
@@ -18,8 +19,8 @@
     "selectedColor": "#FFFFFF",
     "list": [
       {
-        "text": "故事",
-        "pagePath": "pages/story/list/index",
+        "text": "首页",
+        "pagePath": "pages/home/list/index",
         "iconPath": "icons/icon-book.png",
         "selectedIconPath": "icons/icon-book-active.png"
       },
