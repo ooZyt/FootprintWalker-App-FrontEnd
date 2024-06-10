@@ -1,15 +1,16 @@
 <view class="container">
   <view class="activity-card">
-    <!-- 在这里显示点击的活动卡片信息 -->
+    <!-- 显示点击的活动卡片信息 -->
     <image class="activity-image" src="{{activity.image}}"></image>
     <view class="activity-details">
-          <text class="activity-title">{{activity.title}}</text>
-          <text class="activity-description">{{activity.description}}</text>
-          <view class="activity-footer">
-            <text class="activity-time">{{activity.time}}</text>
-          </view>
-        </view>
+      <text class="activity-title">{{activity.title}}</text>
+      <text class="activity-description">{{activity.description}}</text>
+      <view class="activity-footer">
+        <text class="activity-time">{{activity.time}}</text>
+      </view>
+    </view>
   </view>
+  
   <view class="feedback-input">
     <view class="rating">
       <text class="rating-label">我的评分：</text>
@@ -19,8 +20,8 @@
       </block>
       <text> {{currentRating}}</text>
     </view>
-    <input class="feedback-title" placeholder="反馈标题"/>
-    <textarea class="feedback-content" placeholder="反馈内容"></textarea>
+    <input class="feedback-title" placeholder="反馈标题" bindinput="bindTitleInput"/>
+    <textarea class="feedback-content" placeholder="反馈内容" bindinput="bindContentInput"></textarea>
     <button class="submit-button" bindtap="submitFeedback">提交</button>
   </view>
 </view>

@@ -6,17 +6,17 @@
       <text class="feedback-title">{{feedback.title}}</text>
       <text class="feedback-time">{{feedback.time}}</text>
       <block wx:if="{{feedbackType === 'activity'}}">
-        <text class="activity-info">关联活动：{{feedback.activity}}</text>
+        <text class="activity-info">关联活动：{{activity}}</text>
         <text class="activity-info">评分：{{feedback.rating}}</text>
       </block>
 
       <text class="feedback-content">{{feedback.content}}</text>
     </view>
     <!-- Reply details -->
-    <view class="reply-info" wx:if="{{feedback.reply}}">
+    <view class="reply-info">
       <text class="reply-title">回复内容：</text>
-      <text class="reply-time">{{feedback.reply.time}}</text>
-      <text class="reply-content">{{feedback.reply.content}}</text>
+      <text class="reply-time">{{reply.time}}</text>
+      <text class="reply-content">{{reply.content}}</text>
     </view>
   </view>
 </view>

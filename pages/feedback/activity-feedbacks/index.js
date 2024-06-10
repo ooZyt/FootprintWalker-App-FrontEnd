@@ -1,68 +1,136 @@
 Page({
   data: {
-    activities: [
-      {
-        id: 1,
-        image: '/images/activity-1.jpg',
-        title: '千岛湖游玩',
-        description: '一日游，游览千岛湖的美丽风景。',
-        time: '2023-05-15 08:00'
-      },
-      {
-        id: 2,
-        image: '/images/activity-2.jpg',
-        title: '黄山徒步',
-        description: '挑战黄山的险峻，享受徒步的乐趣。',
-        time: '2023-06-10 09:00'
-      },
-      {
-        id: 3,
-        image: '/images/activity-1.jpg',
-        title: '黄山徒步',
-        description: '挑战黄山的险峻，享受徒步的乐趣。',
-        time: '2023-06-10 09:00'
-      },
-      {
-        id: 4,
-        image: '/images/activity-2.jpg',
-        title: '黄山徒步',
-        description: '挑战黄山的险峻，享受徒步的乐趣。',
-        time: '2023-06-10 09:00'
-      },
-      {
-        id: 5,
-        image: '/images/activity-1.jpg',
-        title: '黄山徒步',
-        description: '挑战黄山的险峻，享受徒步的乐趣。',
-        time: '2023-06-10 09:00'
-      },
-    ],
+    activities: [],
+    filteredActivities: [],
+    searchKeyword: '',
     onlyMyActivities: false,
-    sortOrder: 'desc' // 排序方式，默认为降序
+    sortOrder: 'desc', // 排序方式，默认为降序
+    sortButtonText: '按时间降序'
   },
+
+  onLoad: function() {
+    this.loadActivities();
+    this.setSortButtonText(this.data.sortOrder);
+  },
+
+  loadActivities: function() {
+    const that = this;
+    wx.request({
+      url: 'http://localhost:9091/api/activity/activities', // 接口地址
+      method: 'GET',
+      success(res) {
+        if (res.statusCode === 200) {
+          console.log(res.data);
+          const activities = res.data.map(activity => ({
+            id: activity.id,
+            image: activity.adImages[0], // 假设有imageUrl字段
+            title: activity.title,
+            description: activity.description,
+            time: new Date(activity.startTime).toLocaleDateString('zh-CN')
+          })).filter(activity => activity.id !== 9); // 过滤掉 ID 为 9 的活动(社团反馈);
+
+          that.setData({
+            activities: activities,
+            filteredActivities: activities
+          });
+          that.sortActivities(that.data.sortOrder); // 按照默认排序方式排序
+        } else {
+          wx.showToast({
+            title: '加载活动失败',
+            icon: 'none'
+          });
+        }
+      },
+      fail() {
+        wx.showToast({
+          title: '加载活动失败',
+          icon: 'none'
+        });
+      }
+    });
+  },
+
+  onSearchInput: function(e) {
+    this.setData({
+      searchKeyword: e.detail.value
+    });
+  },
+
+  searchActivities: function() {
+    const keyword = this.data.searchKeyword.toLowerCase();
+    const filtered = this.data.activities.filter(activity =>
+      activity.title.toLowerCase().includes(keyword)
+    );
+    this.setData({
+      filteredActivities: filtered
+    });
+  },
+
   toggleMyActivities(e) {
+    const that = this;
     this.setData({
       onlyMyActivities: e.detail.value
     });
-    // TODO: Filter activities based on participation
+
+    if (e.detail.value) {
+      wx.getStorage({
+        key: 'userId',
+        success(res) {
+          const userId = res.data;
+          wx.request({
+            url: `http://localhost:9091/api/activity/activities/participant/${userId}`,
+            method: 'GET',
+            success(response) {
+              if (response.statusCode === 200) {
+                const activities = response.data.content.map(activity => ({
+                  id: activity.id,
+                  image: activity.adImages[0],
+                  title: activity.title,
+                  description: activity.description,
+                  time: new Date(activity.startTime).toLocaleDateString('zh-CN')
+                }));
+
+                that.setData({
+                  activities: activities,
+                  filteredActivities: activities
+                });
+                that.sortActivities(that.data.sortOrder);
+              } else {
+                wx.showToast({
+                  title: '加载我的活动失败',
+                  icon: 'none'
+                });
+              }
+            },
+            fail() {
+              wx.showToast({
+                title: '加载我的活动失败',
+                icon: 'none'
+              });
+            }
+          });
+        },
+        fail() {
+          wx.showToast({
+            title: '获取用户ID失败',
+            icon: 'none'
+          });
+        }
+      });
+    } else {
+      this.loadActivities();
+    }
   },
 
-  // 切换排序方式的事件处理函数
   toggleOrder: function() {
-    // 切换排序方式
     const newSortOrder = this.data.sortOrder === 'desc' ? 'asc' : 'desc';
     this.setData({
       sortOrder: newSortOrder
     });
-
-    // 根据新的排序方式重新排序活动信息数组
     this.sortActivities(newSortOrder);
-
-    // 根据新的排序方式设置按钮文字
     this.setSortButtonText(newSortOrder);
   },
 
-  // 设置排序按钮文字的函数
   setSortButtonText: function(order) {
     const buttonText = order === 'desc' ? '按时间降序' : '按时间升序';
     this.setData({
@@ -70,17 +138,10 @@ Page({
     });
   },
 
-  // 页面加载时设置按钮文字
-  onLoad: function() {
-    // 初始加载时设置按钮文字
-    this.setSortButtonText(this.data.sortOrder);
-  },
-  // 对活动信息数组进行排序的函数
   sortActivities: function(order) {
-    const activities = this.data.activities;
+    const activities = this.data.filteredActivities;
 
     activities.sort((a, b) => {
-      // 根据时间字段排序，假设时间字段为 time
       if (order === 'desc') {
         return new Date(b.time) - new Date(a.time);
       } else {
@@ -88,37 +149,31 @@ Page({
       }
     });
 
-    // 更新排序后的活动信息数组
     this.setData({
-      activities: activities
+      filteredActivities: activities
     });
   },
 
-  // 页面加载时加载活动信息
-  // onLoad: function() {
-  //   this.loadActivities();
-  // },
-
   gotoFeedback: function(event) {
-    // 获取点击的活动信息
     const activityId = event.currentTarget.dataset.id;
     const activity = this.data.activities.find(item => item.id === activityId);
 
-    // 跳转到输入活动反馈页面，并传递活动信息
+    console.log(activity);
+    console.log('/pages/feedback/input-activity-feedback/index?activity=' + JSON.stringify(activity));
+
     wx.navigateTo({
       url: '/pages/feedback/input-activity-feedback/index?activity=' + JSON.stringify(activity)
     });
   },
+
   gotoClubFeedback: function() {
-    // 跳转到输入活动反馈页面，并传递活动信息
     wx.navigateTo({
       url: '/pages/feedback/club-feedback/index'
     });
   },
+
   gotoMyFeedback: function() {
-    // 跳转到输入活动反馈页面，并传递活动信息
-    // wx.navigateTo({
-      wx.redirectTo({
+    wx.redirectTo({
       url: '/pages/feedback/my-feedback/index',
     });
   }
