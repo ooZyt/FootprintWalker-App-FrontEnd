@@ -20,13 +20,13 @@
           <view class="photo relative">
             <view class="tag">{{item.activityStatus==='PUBLISHED'?'可报名':'已结束'}}</view>
             <image mode="aspectFill" src="{{item.adImages.length > 0 ? item.adImages[0] : '../../../images/activity.png'}}"></image>
-            <text class="start-time white">{{formatDate(item.startTime)}}出发</text>
+            <text class="start-time white">{{item.startTime}}出发</text>
           </view>
           <view class="title-box black">
             <view class="title">{{item.title}}</view>
             <view class="info">
               <view>
-                <text>2天1夜</text> ·
+                <text>地点</text> ·
                 <text>{{item.location}}</text>
               </view>
               <view class="share">

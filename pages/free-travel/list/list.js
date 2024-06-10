@@ -49,9 +49,14 @@ Page({
       success(res) {
         if (res.statusCode === 200) {
           console.log('Fetched activities:', res.data); // 输出到控制台
+          const formattedData = res.data.map(activity => {
+            activity.startTime = that.formatDateToSlash(activity.startTime);
+            activity.endTime = that.formatDateToSlash(activity.endTime);
+            return activity;
+          });
           that.setData({
-            fetcheddata: res.data,
-            activities: res.data.filter(activity => activity.activityStatus !== 'DRAFT')
+            fetcheddata: formattedData,
+            activities: formattedData.filter(activity => activity.activityStatus !== 'DRAFT')
           });
         } else {
           wx.showToast({
@@ -70,9 +75,12 @@ Page({
       }
     });
   },
-  formatDate: function (dateString) {
-    const options = { year: 'numeric', month: 'short', day: 'numeric' };
-    return new Date(dateString).toLocaleDateString('zh-CN', options);
+  formatDateToSlash: function (dateString) {
+    const date = new Date(dateString);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // 月份从0开始，需要加1
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}/${month}/${day}`;
   },
   onInputChange: function (e) {
     this.setData({
