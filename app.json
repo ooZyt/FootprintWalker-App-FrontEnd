@@ -1,13 +1,12 @@
 {
   "pages": [
-    "pages/free-travel/list/index",
     "pages/user/center/index",
     "pages/user/join/index",
     "pages/story/detail/index",
     "pages/story/comment/index",
     "pages/free-travel/detail/index",
     "pages/free-travel/form/index",
-    "pages/team-travel/list/index",
+    "pages/free-travel/list/list",
     "pages/demand/add/index",
     "pages/feedback/activity-feedbacks/index",
     "pages/feedback/input-activity-feedback/index",
@@ -30,7 +29,7 @@
       },
       {
         "text": "活动",
-        "pagePath": "pages/free-travel/list/index",
+        "pagePath": "pages/free-travel/list/list",
         "iconPath": "icons/icon-trunk.png",
         "selectedIconPath": "icons/icon-trunk-active.png"
       },

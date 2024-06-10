@@ -316,3 +316,12 @@ swiper {
   line-height: 56rpx;
   background-color: #C5A1F7;
 }
+.inform-button {
+  padding: 6px 12px; /* 调整按钮大小 */
+  background-color: #C5A1F7;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  margin-top: 10px;
+  width: 40%;
+}

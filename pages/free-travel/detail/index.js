@@ -7,7 +7,8 @@ Page({
   data: {
     activityId: null,
     activityDetails: {},
-    advisorMsg: "<p>在大家反馈中出现频率最高的千岛湖之旅它来啦！走过路过不要错过哦~</p>",
+    leaderDetails:'',
+    advisorMsg: "<p>在大家反馈中出现频率最高的活动地点它来啦！走过路过不要错过哦~</p>",
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     showModal: false, //点击报名显示弹窗
@@ -27,7 +28,7 @@ Page({
     // 假设您有一个获取活动详情的接口
     console.log(id);
     wx.request({
-      url: `http://localhost:9091/api/activity/activities/1`, // 根据实际情况替换 URL
+      url: `http://localhost:9091/api/activity/activities/${id}`, // 根据实际情况替换 URL
       method: 'GET',
       header: {
         'Content-Type': 'application/json'
@@ -36,16 +37,50 @@ Page({
         //格式化日期
         res.data.startTime = this.formatDateToSlash(res.data.startTime);
         res.data.endTime = this.formatDateToSlash(res.data.endTime);
-
-
         if (res.statusCode === 200) {
           console.log(res.data);
           this.setData({
             activityDetails: res.data
           });
+          if (res.data.leaderIds && res.data.leaderIds.length > 0) {
+            const leaderId = res.data.leaderIds[0];
+            this.fetchLeaderDetails(leaderId);
+          }
         } else {
           wx.showToast({
             title: '获取数据失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '网络请求失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    });
+  },
+
+  //获取举办者信息
+  fetchLeaderDetails: function (leaderId) {
+    wx.request({
+      url: `http://localhost:8090/api/human_management/members/${leaderId}`, // 根据实际情况替换 URL
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: (res) => {
+        if (res.statusCode === 200) {
+          console.log('Leader details:', res.data);
+          this.setData({
+            leaderDetails: res.data
+          });
+        } else {
+          wx.showToast({
+            title: '获取领导者数据失败',
             icon: 'none',
             duration: 2000
           });
@@ -83,9 +118,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
-  },
+ 
 
   /**
    * 生命周期函数--监听页面初次渲染完成

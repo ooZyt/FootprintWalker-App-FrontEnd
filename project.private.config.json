@@ -3,5 +3,19 @@
   "projectname": "FootprintWalker",
   "setting": {
     "compileHotReLoad": true
+  },
+  "libVersion": "3.4.7",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/free-travel/list/list",
+          "pathName": "pages/free-travel/list/list",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
   }
 }

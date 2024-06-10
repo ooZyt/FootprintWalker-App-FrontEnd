@@ -18,16 +18,15 @@
       <text class="tag">团建</text>
     </view>
     <view class="title black">{{activityDetails.title}}</view>
-    <button bind:tap="fetchActivityDetails">test
-    </button>
+    
     <view class="date-time grey">
       <image class="icon-month" src="../../../icons/icon-rili.png"></image>
       <text>{{activityDetails.startTime}}-{{activityDetails.endTime}}</text>
     </view>
     <view class="advisor grey">
-      <image class="avatar" src="{{activityDetails.adImages}}"></image>
+      <image class="avatar" src="../../../images/avatar.jpeg"></image>
       <view>
-        <view class="name">{{activityDetails.leaderIds[0]}}</view>
+        <view class="name">{{leaderDetails.name}}</view>
         <view class="sologan">足迹行者社团活动部管理员</view>
       </view>
     </view>
@@ -64,20 +63,20 @@
             <view class="icon-calendar">
               <image src="../../../icons/icon-calendar.png"></image>
             </view>
-            <text class="name">DAY1：前往千岛湖</text>
+            <text class="name">{{activityDetails.title}}</text>
           </view>
           <view class="date-box">
             <view class="icon-date">
               <text class="iconfont icon-shikebiao"></text>
             </view>
-            <text class="date">9.25</text>
+            <text class="date">{{activityDetails.startTime}}</text>
           </view>
           <view class="content-box">
             {{activityDetails.activityInfo}}
-            <image mode="aspectFit" src="../../../images/photo-1.png"></image>
+            <image mode="aspectFit" src="{{activityDetails.adImages}}"></image>
           </view>
         </view>
-        <view class="li">
+        <!-- <view class="li">
           <view class="name-box">
             <view class="icon-calendar">
               <image src="../../../icons/icon-calendar.png"></image>
@@ -94,7 +93,7 @@
             在日本国宝级导师的指导下，零距离学习三日味禅课程，感受自然阴阳，通过料理和饮食方式疗愈自身。 【味禅导师：野口清美】 野口老师是樱泽如一先生的第三代大弟子，擅长食养料理，阴阳理念的讲解，以及自然疗法，对大自然心怀感激，致力于食养料理的研究，在日本推广自然平衡饮食（Macrobiotic）理念。对健康的日益关心还促使她学习了东洋医学以及顺势疗法，并且获得了日本和英国顺势疗法医学协会的认证资格。
             <image mode="aspectFit" src="../../../images/photo-1.png"></image>
           </view>
-        </view>
+        </view> -->
       </view>
       <view class="title">活动费用</view>
       <view class="expenses">
@@ -132,8 +131,8 @@
       <rich-text nodes="{{informMsg}}"></rich-text>
       
       <view class="modal-footer">
-        <button bindtap="reject">不接受</button>
-        <button bindtap="accept">接受</button>
+        <button class="inform-button" bindtap="reject">不接受</button>
+        <button class="inform-button" bindtap="accept">接受</button>
       </view>
     </view>
   </view>
