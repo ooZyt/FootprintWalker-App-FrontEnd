@@ -3,7 +3,7 @@
   <!-- 轮播图 -->
   <swiper indicator-dots="true" indicator-color="white">
     <swiper-item>
-      <image src="../../../images/activity.png" class="slide-image" />
+      <image src="{{activityDetails.adImages}}" class="slide-image" />
     </swiper-item>
     <swiper-item>
       <image src="../../../images/photo-2.png" class="slide-image" />
@@ -17,15 +17,17 @@
       <text class="tag">轰趴</text>
       <text class="tag">团建</text>
     </view>
-    <view class="title black">周末轰趴｜虽迟但到的千岛湖之约</view>
+    <view class="title black">{{activityDetails.title}}</view>
+    <button bind:tap="fetchActivityDetails">test
+    </button>
     <view class="date-time grey">
       <image class="icon-month" src="../../../icons/icon-rili.png"></image>
-      <text>2024.8.23-2019.8.25(2天1夜)</text>
+      <text>{{activityDetails.startTime}}-{{activityDetails.endTime}}</text>
     </view>
     <view class="advisor grey">
-      <image class="avatar" src="../../../images/avatar.jpeg"></image>
+      <image class="avatar" src="{{activityDetails.adImages}}"></image>
       <view>
-        <view class="name">段婷婷</view>
+        <view class="name">{{activityDetails.leaderIds[0]}}</view>
         <view class="sologan">足迹行者社团活动部管理员</view>
       </view>
     </view>
@@ -71,16 +73,7 @@
             <text class="date">9.25</text>
           </view>
           <view class="content-box">
-            在浙江淳安县有这么一处胜景
-            崇山峻岭淹入湖中
-            乃成为大小翠岛
-            从淳安县城乘当地百姓的水上巴士
-            溯新安江而上
-            或登上天屿山
-            一览碧水呈奇，千岛百姿
-            这里自然风光旖旎，生态环境佳绝
-            我们不保证能走废你的腿
-            但保证满足你想旅行的眼睛
+            {{activityDetails.activityInfo}}
             <image mode="aspectFit" src="../../../images/photo-1.png"></image>
           </view>
         </view>
@@ -117,7 +110,7 @@
         </block>
       </view>
       <view class="total">
-        <text>总费用: 300元</text>
+        <text>总费用: {{activityDetails.cost}}</text>
       </view>
       
       

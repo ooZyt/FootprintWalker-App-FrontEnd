@@ -1,6 +1,6 @@
 // pages/setout/list/index.js
+//仍然存在问题：无法在进入页面时直接调用接口，怪
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -8,6 +8,90 @@ Page({
     currentTab: 0, //预设当前项的值
     scrollLeft: 0, //tab标题的滚动条位置
     showModal: false,
+    currentFilter: 'all', // 当前活动过滤器状态
+    fetcheddata:[],
+    activities:[],
+    searchKeyword: '' // 用户输入的关键词
+  },
+  onLoad: function () {
+    console.log('hello');
+    this.fetchActivities();
+  },
+  handleFetchActivities: function () {
+    this.fetchActivities();
+    this.setData({
+      currentFilter: 'all'
+    });
+  },
+  FetchNowActivities: function () {
+    const activities = this.data.fetcheddata.filter(activity => activity.activityStatus === 'PUBLISHED');
+    this.setData({
+      activities: activities,
+      currentFilter: 'now'
+    });
+  },
+  FetchBeforeActivities: function () {
+    const activities = this.data.fetcheddata.filter(activity => activity.activityStatus === 'RETROSPECTIVE');
+    this.setData({
+      activities: activities,
+      currentFilter: 'before'
+    });
+  },
+  fetchActivities: function () {
+    var that = this;
+    wx.request({
+      url: 'http://localhost:9091/api/activity/activities', // 接口地址
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success(res) {
+        if (res.statusCode === 200) {
+          console.log('Fetched activities:', res.data); // 输出到控制台
+          that.setData({
+            fetcheddata: res.data,
+            activities: res.data.filter(activity => activity.activityStatus !== 'DRAFT')
+          });
+        } else {
+          wx.showToast({
+            title: '获取数据失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      },
+      fail() {
+        wx.showToast({
+          title: '网络请求失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    });
+  },
+  formatDate: function (dateString) {
+    const options = { year: 'numeric', month: 'short', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('zh-CN', options);
+  },
+  onInputChange: function (e) {
+    this.setData({
+      searchKeyword: e.detail.value
+    });
+  },
+
+  searchActivities: function () {
+    const keyword = this.data.searchKeyword.toLowerCase();
+    let activities = this.data.fetcheddata.filter(activity => activity.title.toLowerCase().includes(keyword));
+    
+    if (this.data.currentFilter === 'now') {
+      activities = activities.filter(activity => activity.activityStatus === 'PUBLISHED');
+    } else if (this.data.currentFilter === 'before') {
+      activities = activities.filter(activity => activity.activityStatus === 'RETROSPECTIVE');
+    }
+    
+    this.setData({
+      activities: activities
+    });
   },
   // 滚动切换标签样式
   switchTab(e) {

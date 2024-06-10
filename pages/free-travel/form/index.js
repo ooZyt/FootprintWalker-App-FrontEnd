@@ -3,9 +3,9 @@ Page({
   data: {
     studentID: '',
     name: '',
-    contact: ''
+    contact: '',
   },
-
+  
   handleInput: function(e) {
     const { field } = e.currentTarget.dataset;
     this.setData({

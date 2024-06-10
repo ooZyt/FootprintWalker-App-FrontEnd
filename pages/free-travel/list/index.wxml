@@ -2,56 +2,35 @@
 <view class="container {{showModal?'freeze':''}}">
   <!-- Search bar -->
   <view class="search-container">
-    <input class="search-input" placeholder="请输入关键词，如“千岛湖”"/>
-    <button class="search-button">搜索</button>
+    <input class="search-input" placeholder="请输入关键词，如“千岛湖”" bindinput="onInputChange"/>
+    <button class="search-button" bindtap="searchActivities">搜索</button>
   </view>
 
   <!-- Filter options -->
   <view class="filter-container">
-    <button class="filter-button active">正在进行</button>
-    <button class="filter-button">往期活动</button>
-    <button class="filter-button">活动预告</button>
+    <button class="{{currentFilter === 'all' ? 'filter-button active' : 'filter-button'}}" bindtap="handleFetchActivities">全部活动</button>
+    <button class="{{currentFilter === 'now' ? 'filter-button active' : 'filter-button'}}" bindtap="FetchNowActivities">正在进行</button>
+    <button class="{{currentFilter === 'before' ? 'filter-button active' : 'filter-button'}}" bindtap="FetchBeforeActivities">往期活动</button>
   </view>
   <!-- 列表 -->
   <view class="tab-content">
-    <view class="goods-list">
+    <view class="goods-list" wx:for="{{activities}}" wx:key="id">
       <view class="li">
-        <navigator url="../detail/index">
+        <navigator url="../detail/index?id={{item.id}}">
           <view class="photo relative">
-            <view class="tag">可报名</view>
-            <image mode="aspectFill" src="../../../images/activity.png"></image>
-            <text class="start-time white">8月23日出发</text>
+            <view class="tag">{{item.activityStatus==='PUBLISHED'?'可报名':'已结束'}}</view>
+            <image mode="aspectFill" src="{{item.adImages.length > 0 ? item.adImages[0] : '../../../images/activity.png'}}"></image>
+            <text class="start-time white">{{formatDate(item.startTime)}}出发</text>
           </view>
           <view class="title-box black">
-            <view class="title">周末轰趴｜虽迟但到的千岛湖之约</view>
+            <view class="title">{{item.title}}</view>
             <view class="info">
               <view>
                 <text>2天1夜</text> ·
-                <text>浙江淳安县</text>
+                <text>{{item.location}}</text>
               </view>
               <view class="share">
-                <text class="iconfont icon-fenxiang1"></text> 356
-              </view>
-            </view>
-          </view>
-        </navigator>
-      </view>
-      <view class="li">
-        <navigator url="../detail/index">
-          <view class="photo relative">
-            <view class="tag">可报名</view>
-            <image mode="aspectFill" src="../../../images/photo-2.png"></image>
-            <text class="start-time white">8月23日出发</text>
-          </view>
-          <view class="title-box black">
-            <view class="title">探秘紫金山 | 徒步周末之旅 🏞️🥾</view>
-            <view class="info">
-              <view>
-                <text>1天</text> ·
-                <text>紫金山</text>
-              </view>
-              <view class="share">
-                <text class="iconfont icon-fenxiang1"></text> 356
+                <text class="iconfont icon-fenxiang1"></text> {{item.participantIds.length}}
               </view>
             </view>
           </view>
