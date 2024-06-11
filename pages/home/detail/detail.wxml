@@ -1,5 +1,5 @@
 <!--pages/home/detail/detail.wxml-->
-<!-- 基本信息 -->
+
 
   <!-- 轮播图 -->
   <swiper indicator-dots="true" indicator-color="white">

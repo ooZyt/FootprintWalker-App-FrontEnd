@@ -16,25 +16,28 @@
   <text class="popular-activity">热门活动</text>
   <view class="activity-list">
   <block wx:for="{{activities}}" wx:key="id">
+    <navigator url="../../free-travel/detail/index?id={{item.id}}">
     <view class="activity-card">
+
       <!-- 根据id奇偶性决定 image 和 text 的顺序 -->
-      <view wx:if="{{item.id % 2 === 1}}" class="activity-image-wrapper">
-        <image class="activity-image" src="{{item.image}}"></image>
+      <view wx:if="{{item.orderId % 2 === 1}}" class="activity-image-wrapper">
+        <image class="activity-image" src="{{item.adImages.length > 0 ? item.adImages[0] : '../../../images/activity.png'}}"></image>
       </view>
       <view class="activity-details">
         <text class="activity-title">{{item.title}}</text>
-        <text class="activity-description">{{item.description}}</text>
+        <text class="activity-description">{{item.shortActivityInfo}}</text>
         <view class="activity-footer">
-        <text class="activity-time">{{item.time}}</text>
-        <button class="detail_info" bindtap="gotoDetail" data-id="{{item.id}}">详细信息</button>
+        <text class="activity-time">{{item.startTime}}</text>
+        <button class="detail_info" url="../../free-travel/detail/index?id={{item.id}}" data-id="{{item.id}}">详细信息</button>
       </view>
       </view>
       
-      <view wx:if="{{item.id % 2 === 0}}" class="activity-image-wrapper">
-        <image class="activity-image" src="{{item.image}}"></image>
+      <view wx:if="{{item.orderId % 2 === 0}}" class="activity-image-wrapper">
+        <image class="activity-image" src="{{item.adImages.length > 0 ? item.adImages[0] : '../../../images/activity.png'}}"></image>
       </view>
-
+    
     </view>
+</navigator>
   </block>
 </view>
   <text class="popular-activity">往期活动</text>
