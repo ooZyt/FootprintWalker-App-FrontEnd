@@ -8,8 +8,12 @@
   <!--社团宣传-->
   <view class="joinUs">
 <view class="joinUsTag">
+    <navigator url="/pages/home/aboutUs/aboutUs" open-type="navigate">
     <button class="joinUsButton">--关于 我们--</button>
+    </navigator>
+    <navigator url="/pages/home/joinUs/detail" open-type="navigate">
     <button class="joinUsButton">--加入 我们--</button>
+</navigator>
 </view>
   </view>
   <!-- 列表 -->

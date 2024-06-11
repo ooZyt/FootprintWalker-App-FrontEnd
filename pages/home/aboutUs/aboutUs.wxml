@@ -1,0 +1,38 @@
+<!--pages/home/aboutUs/aboutUs.wxml-->
+<!-- pages/home/aboutUs/aboutUs.wxml -->
+<view class="container">
+    <!-- 顶部横幅 -->
+    <view class="banner">
+        <image class="banner-image" src="../../../images/home/poster.jpg" ></image>
+        <text class="banner-title">足迹行者</text>
+    </view>
+
+    <!-- 关于我们 -->
+    <view class="section about-us">
+        <text class="section-title">关于我们</text>
+        <view class="spacer"></view>
+        <text class="section-content">足迹行者是同济大学的学生社团，致力于组织学生外出旅游和郊游活动。我们提供丰富多样的旅行目的地和活动选择，让同学们能够亲近自然、放松身心，增进友谊和团队合作意识。</text>
+    </view>
+
+    <!-- 添加一些社团集体的照片 -->
+    <view class="swiper-container">
+    <swiper indicator-dots indicator-color="rgba(255,255,255,0.4)" indicator-active-color="#ffd11b" autoplay>
+      <swiper-item>
+        <image src="../../../images/home/hengsha1.jpg" class="slide-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="../../../images/home/huangshan.jpg" class="slide-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="../../../images/home/shamo.jpg" class="slide-image" />
+      </swiper-item>
+      <swiper-item>
+        <image src="../../../images/home/xihu.jpg" class="slide-image" />
+      </swiper-item>
+    </swiper>
+  </view>
+
+    <!-- 加入我们 -->
+
+</view>
+

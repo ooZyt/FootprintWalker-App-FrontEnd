@@ -1,17 +1,25 @@
 <!--pages/home/detail/detail.wxml-->
+<view class="container">
+<view class="section join-us">
+        <text class="section-title">加入我们</text>
+        <view class="spacer"></view> 
+        <text class="section-content">加入我们，成为校园中的引领者！你是否渴望在校园里展现自己的领袖魅力，影响更多的同学？你是否希望参与策划并组织那些让人印象深刻的活动和项目？那么，这就是你大展拳脚的舞台！我们诚挚邀请你加入我们的团队，成为我们的一员。作为一名干事，你将有机会参与各种丰富多彩的活动策划、组织和执行，锻炼你的团队合作能力、沟通技巧和领导潜能。无论你是对活动策划充满热情，还是渴望提升自己的团队管理能力，我们都将为你提供一个施展才华的舞台。加入我们，让我们一起书写属于我们的精彩故事，为校园增添更多色彩，展现青春无限的活力！快来成为我们团队的一份子吧，让我们一同开启未来的精彩旅程！</text>
+        <button class="join-button">立即加入</button>
+    </view>
 
+</view>
 
   <!-- 轮播图 -->
-  <swiper indicator-dots="true" indicator-color="white">
+  <!-- <swiper indicator-dots="true" indicator-color="white">
     <swiper-item>
       <image src="../../../images/activity.png" class="slide-image" />
     </swiper-item>
     <swiper-item>
       <image src="../../../images/photo-2.png" class="slide-image" />
     </swiper-item>
-  </swiper>
+  </swiper> -->
 <!-- 基本信息 -->
-<view class="basic-info">
+<!-- <view class="basic-info">
   <view class="tag-box black">
     <block wx:for="{{tags}}" wx:key="index">
       <text class="tag">{{item}}</text>
@@ -38,9 +46,8 @@
     </view>
   </view>
 </view>
-<!-- 选项卡 -->
 <!-- 导航 -->
-<view class='tab-title'>
+<!-- <view class='tab-title'>
   <scroll-view scroll-x="true" scroll-left="{{scrollLeft}}">
     <view class='scroll-x'>
       <block wx:for="{{tabs}}" wx:key="index">
@@ -89,4 +96,4 @@
       <text>{{totalCost}}</text>
     </view>
   </view>
-</view>
+</view> --> 
