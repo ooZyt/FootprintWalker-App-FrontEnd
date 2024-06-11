@@ -52,7 +52,7 @@ Page({
   fetchActivities: function () {
     var that = this;
     wx.request({
-      url: 'http://localhost:9091/api/activity/activities', // 接口地址
+      url: 'http://localhost:9091/api/activity/activities/popular', // 接口地址
       method: 'GET',
       header: {
         'Content-Type': 'application/json'
