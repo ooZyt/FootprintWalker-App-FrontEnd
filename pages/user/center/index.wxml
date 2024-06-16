@@ -28,20 +28,17 @@
   </view>
   <!-- 我的订单 -->
   <view class="user-order bg-white">
-    <view class="title">我的订单</view>
+    <view class="title">我的报名</view>
     <view class="content">
-      <navigator class="li">
-        <image src="../../../icons/icon-wallet.png"></image>
-        <view class="txt">待付款</view>
-      </navigator>
-      <navigator class="li">
-        <image src="../../../icons/icon-boat-red.png"></image>
-        <view class="txt">待出舱</view>
-      </navigator>
-      <navigator class="li">
-        <image src="../../../icons/icon-boat-green.png"></image>
-        <view class="txt">已出舱</view>
-      </navigator>
+      <!-- 用来显示我本人的报名 -->
+      <scroll-view scroll-x="true" class="show-photo" wx:if="{{type==1}}">
+        <view class="allcat-photo" style="{{item.id!=6?'margin-right:16px;':'margin-right:27px;'}}" wx:for="{{allcat_url}}" data-id="{{item.id}}" bindtap="chooseCat">
+          <!--猫咪头像-->
+          <image class="lower-cat-photo {{cat_index==item.id?'lowerCat-photo-active':''}}" src="{{item.url}}" />
+          <!--打勾-->
+          <image class="hook-icon" src="../../static/icon/hook.png" wx:if="{{cat_index==item.id}}" />
+        </view>
+      </scroll-view>
     </view>
   </view>
   <!-- 菜单栏 -->

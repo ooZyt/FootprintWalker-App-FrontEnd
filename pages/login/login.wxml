@@ -1,0 +1,45 @@
+<view class="content">
+  <view class="head">
+		<image class="logo" src="../../images/club.png"></image>
+		<text class="tip">欢迎登录足迹行者系统</text>
+	</view>
+	<view class="form-box">
+		<view class="tab-box">
+			<view class="row-tab" bind:tap="tabClick" data-index="0">
+				<text :class="tabIndex==0?'tab-active':''">账号登录</text>
+				<text class="thing" wx:if="{{tabIndex==0?true:false}}"></text>
+			</view>
+			<view class="row-tab" bind:tap="tabClick" data-index="1">
+				<text :class="tabIndex==1?'tab-active':''">验证码登录</text>
+				<text class="thing" wx:if="{{tabIndex==1?true:false}}"></text>
+			</view>
+		</view>
+		<view wx:if="{{tabIndex==0}}">
+			<view class="row-input">
+				<input maxlength="11" placeholder="手机号码" bindinput="onInputChange" data-field="phoneNumber" value="{{loginForm.phoneNumber}}"/>
+			</view>
+			<view class="row-input">
+				<input password maxlength="18" placeholder="密码" bindinput="onInputChange" data-field="password" value="{{loginForm.password}}"/>
+			</view>
+		</view>
+		<view wx:if="{{tabIndex==1}}">
+			<view class="row-input">
+				<input maxlength="11" placeholder="手机号码" bindinput="onInputChange" data-field="phoneNumber" value="{{loginForm.phoneNumber}}"/>
+				<view class="code">
+					<text bind:tap="getLoginPhoneCode" wx:if="{{codeForm.showCode}}">获取验证码</text>
+          <text wx:if="{{loginForm.showCode === false}}">{{ codeForm.count }}</text>
+				</view>
+			</view>
+			<view class="row-input">
+				<input maxlength="6" placeholder="验证码" />
+			</view>
+		</view>
+		<view class="login-btn" bind:tap="login">
+			登录
+		</view>
+		<view class="menu-link">
+			<text bind:tap="register">注册</text>
+			<text bind:tap="findpassword">找回密码</text>
+		</view>
+	</view>
+</view>
