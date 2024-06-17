@@ -122,7 +122,7 @@
       <text class="iconfont icon-shoucang1"></text>
       <view class="grey">收藏</view>
     </view>
-    <button class="btn" type="primary" bindtap="showDialog">立即报名</button>
+    <button class="btn" type="primary" bindtap="showDialog" style="background-color: {{buttonColor}}" disabled="{{disabled}}">{{buttonText}}</button>
   </view>
 
   <view wx:if="{{showModal}}" class="modal">
