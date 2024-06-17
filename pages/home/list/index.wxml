@@ -7,42 +7,45 @@
   </view>
   <!--社团宣传-->
   <view class="joinUs">
-<view class="joinUsTag">
-    <navigator url="/pages/home/aboutUs/aboutUs" open-type="navigate">
-    <button class="joinUsButton">--关于 我们--</button>
-    </navigator>
-    <navigator url="/pages/home/joinUs/detail" open-type="navigate">
-    <button class="joinUsButton">--加入 我们--</button>
-</navigator>
+    <view class="joinUs">
+    <view class="joinUsTag">
+        <navigator url="/pages/home/aboutUs/aboutUs" open-type="navigate">
+            <view class="joinUsButton">
+                <text>关于我们</text>
+            </view>
+        </navigator>
+        <navigator url="/pages/home/joinUs/detail" open-type="navigate">
+            <view class="joinUsButton">
+                <text>加入我们</text>
+            </view>
+        </navigator>
+    </view>
 </view>
   </view>
   <!-- 列表 -->
   <text class="popular-activity">热门活动</text>
   <view class="activity-list">
-  <block wx:for="{{activities}}" wx:key="id">
+    <block wx:for="{{activities}}" wx:key="id">
     <navigator url="../../free-travel/detail/index?id={{item.id}}">
-    <view class="activity-card">
-
-      <!-- 根据id奇偶性决定 image 和 text 的顺序 -->
-      <view wx:if="{{item.orderId % 2 === 1}}" class="activity-image-wrapper">
-        <image class="activity-image" src="{{item.adImages.length > 0 ? item.adImages[0] : '../../../images/activity.png'}}"></image>
-      </view>
-      <view class="activity-details">
-        <text class="activity-title">{{item.title}}</text>
-        <text class="activity-description">{{item.shortActivityInfo}}</text>
-        <view class="activity-footer">
-        <text class="activity-time">{{item.startTime}}</text>
-        <button class="detail_info" url="../../free-travel/detail/index?id={{item.id}}" data-id="{{item.id}}">详细信息</button>
-      </view>
-      </view>
-      
-      <view wx:if="{{item.orderId % 2 === 0}}" class="activity-image-wrapper">
-        <image class="activity-image" src="{{item.adImages.length > 0 ? item.adImages[0] : '../../../images/activity.png'}}"></image>
-      </view>
-    
-    </view>
-</navigator>
-  </block>
+        <view class="activity-card">
+            <!-- 根据id奇偶性决定 image 和 text 的顺序 -->
+            <view wx:if="{{item.orderId % 2 === 1}}" class="activity-image-wrapper">
+                <image class="activity-image" src="{{item.adImages.length > 0 ? item.adImages[0] : '../../../images/activity.png'}}"></image>
+            </view>
+            <view class="activity-details">
+                <text class="activity-title">{{item.title}}</text>
+                <text class="activity-description">{{item.shortActivityInfo}}</text>
+                <view class="activity-footer">
+                    <text class="activity-time">{{item.startTime}}</text>
+                    <button class="detail_info" url="../../free-travel/detail/index?id={{item.id}}" data-id="{{item.id}}">详细信息</button>
+                </view>
+            </view>
+            <view wx:if="{{item.orderId % 2 === 0}}" class="activity-image-wrapper">
+                <image class="activity-image" src="{{item.adImages.length > 0 ? item.adImages[0] : '../../../images/activity.png'}}"></image>
+            </view>
+        </view>
+    </navigator>
+</block>
 </view>
   <text class="popular-activity">往期活动</text>
     <!-- 轮播图 -->

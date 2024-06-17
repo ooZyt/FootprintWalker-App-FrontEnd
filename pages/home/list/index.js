@@ -64,7 +64,7 @@ Page({
           const formattedData = topThreeActivities.map((activity, index) => {
             activity.startTime = that.formatDateToSlash(activity.startTime);
             activity.endTime = that.formatDateToSlash(activity.endTime);
-            activity.shortActivityInfo = activity.activityInfo.length > 20 ? activity.activityInfo.substring(0, 20) + "......" : activity.activityInfo;
+            activity.shortActivityInfo = activity.activityInfo.length > 45 ? activity.activityInfo.substring(0, 45) + "......" : activity.activityInfo;
             activity.orderId = index + 1; // 添加orderId字段
             return activity;
           });

@@ -34,6 +34,7 @@
     display: flex;
     justify-content: center; /* 水平居中 */
     align-items: center; /* 垂直居中 */
+    background-color: #C5A1F7;
   }
   
   .joinUsTag {
@@ -46,14 +47,18 @@
     outline: none;
     background-color: #815aee; /* 按钮背景颜色 */
     color: white;
-    border-radius: 50%; /* 圆角边框 */
-    width: 60px; /* 设置一个固定宽度，根据需要调整 */
-    height: 60px; /* 设置一个固定高度，与宽度相等 */
+    border-radius: 30px; /* 圆角边框，改变为椭圆形 */
+    width: 100px; /* 调整宽度 */
+    height: 30px; /* 调整高度 */
     text-align: center; /* 文字居中 */
-    font-size: 10px;
-    padding: 10px; /* 内边距 */
-    margin: 10px 60px; /* 外边距 */
-  }
+    font-size: 16px; /* 增大字体大小 */
+    padding: 15px; /* 内边距 */
+    margin: 10px 20px; /* 外边距 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    transition: background-color 0.3s, transform 0.3s; /* 添加过渡效果 */
+}
+
+
   /* 热门活动文本样式 */
   .popular-activity {
     font-size: 18px; /* 字体大小 */
@@ -79,17 +84,36 @@
     border-radius: 5px; /* 圆角边框 */
     margin-bottom: 10px; /* 卡片之间的间距 */
   }
-  
-  .activity-image {
-    width: 150px; /* 固定宽度 */
-    height: 100px;
-    margin-right: 10px; /* 与描述文字的间距 */
-  }
+  .activity-image-wrapper {
+    width: 45%; /* 图片占45% */
+    position: relative;
+}
+
+.activity-image {
+    width: 95%; /* 图片宽度填满容器 */
+    height: auto;
+    border-radius: 5px 5px 5px 5px; /* 只给左边缘圆角，如果需要 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 10px;
+    bottom: 0;
+}
+
+.activity-image-wrapper::before {
+    content: "";
+    display: block;
+    padding-bottom: 75%; /* 4:3 高宽比 */
+}
   
   .activity-details {
+    width: 50%; /* 文字部分占55% */
     display: flex;
     flex-direction: column;
-  }
+    justify-content: space-between; /* 保证footer在底部 */
+    flex: 1; /* 占满剩余空间 */
+    min-height: 150px; /* 设置最小高度以避免上移 */
+}
   
   .activity-title {
     font-size: 16px; /* 字体大小 */
@@ -104,7 +128,8 @@
   .activity-footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items:baseline;
+    margin-top: auto; /* 将footer推到容器底部 */
   }
   
   .activity-time {
