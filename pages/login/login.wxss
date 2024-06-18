@@ -1,5 +1,5 @@
 page {
-  background-color: #007AFF;
+  background-color: #C5A1F7;
 }
 
 .head {
@@ -62,14 +62,14 @@ page {
 }
 
 .form-box .tab-box .row-tab .tab-active {
-  color: #4d88f8;
+  color: #C5A1F7;
 }
 
 .form-box .tab-box .row-tab .thing {
   margin-top: 20rpx;
   width: 50rpx;
   height: 6rpx;
-  background-color: #3884f6;
+  background-color: #C5A1F7;
 }
 
 .form-box .row-input {
@@ -90,7 +90,7 @@ page {
   display: flex;
   justify-content: flex-end;
   font-weight: bold;
-  color: #0b77f7;
+  color: #C5A1F7;
   width: 200rpx;
   font-size: 26rpx;
 }
@@ -102,7 +102,7 @@ page {
   align-items: center;
   height: 100rpx;
   letter-spacing: 10rpx;
-  background: linear-gradient(to right, #0a7df7, #0f62f3);
+  background: linear-gradient(to right, #C5A1F7, #C5A1F7);
   color: #FFFFFF;
   border-radius: 10rpx;
   font-size: 30rpx;

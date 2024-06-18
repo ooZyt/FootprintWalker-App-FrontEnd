@@ -2,34 +2,13 @@
   <view class="row-input">
 		<text>昵称</text>
 		<view class="input-box">
-			<input placeholder="请输入您的昵称" maxlength="11" bindinput="onInputChange" data-field="name" value="{{name}}"/>
+			<input placeholder="请输入您的昵称" bindinput="onInputChange" data-field="name" value="{{name}}"/>
 		</view>
   </view>
 	<view class="row-input">
 		<text>电话号码</text>
 		<view class="input-box">
 			<input placeholder="请输入您的电话号码" maxlength="11" bindinput="onInputChange" data-field="telephone" value="{{telephone}}"/>
-		</view>
-	</view>
-	<view class="row-input2">
-		<text>验证码</text>
-		<view class="input-box2">
-			<input class="input2" placeholder="请输入您的验证码" maxlength="6" />
-			<view class="code">
-				<text>获取验证码</text>
-			</view>
-		</view>
-	</view>
-	<view class="row-input">
-		<text>登录密码</text>
-		<view class="input-box">
-			<input placeholder="请输入您的登录密码" maxlength="18" bindinput="onInputChange" data-field="password" value="{{password}}"/>
-		</view>
-	</view>
-	<view class="row-input">
-		<text>确认密码</text>
-		<view class="input-box">
-			<input placeholder="再次输入登录密码" maxlength="18" bindinput="onInputChange" data-field="verifyPassword" value="{{verifyPassword}}"/>
 		</view>
   </view>
   <view class="row-input">
@@ -45,12 +24,6 @@
 			  {{isOut[registerStyle]}}
 		  </view>
     </picker>
-	</view>
-  <view class="row-input" wx:if="{{registerStyle==0}}">
-		<text>学号</text>
-		<view class="input-box">
-			<input placeholder="请输入您的学号" maxlength="7" bindinput="onInputChange" data-field="studentNumber" value="{{studentNumber}}"/>
-		</view>
 	</view>
   <view class="row-input" wx:if="{{registerStyle==0}}">
     <text>学院</text>
@@ -74,7 +47,7 @@
 			<input placeholder="请输入您的专业" maxlength="20" bindinput="onInputChange" data-field="major" value="{{major}}"/>
 		</view>
 	</view>
-	<view class="register-btn" bind:tap="register">
-		注册
+	<view class="update-btn" bind:tap="update">
+		修改个人信息
 	</view>
 </view>
