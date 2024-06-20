@@ -10,7 +10,7 @@
     "pages/free-travel/detail/index",
     "pages/free-travel/form/index",
     "pages/free-travel/list/list",
-    "pages/demand/add/index",
+
     "pages/feedback/activity-feedbacks/index",
     "pages/feedback/input-activity-feedback/index",
     "pages/feedback/club-feedback/index",
@@ -37,12 +37,7 @@
         "iconPath": "icons/icon-trunk.png",
         "selectedIconPath": "icons/icon-trunk-active.png"
       },
-      {
-        "text": "提交需求",
-        "pagePath": "pages/demand/add/index",
-        "iconPath": "icons/tab-bar-plus.png",
-        "selectedIconPath": "icons/tab-bar-plus-active.png"
-      },
+      
       {
         "text": "反馈",
         "pagePath": "pages/feedback/activity-feedbacks/index",
