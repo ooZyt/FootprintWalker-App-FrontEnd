@@ -1,4 +1,0 @@
-<!--pages/user/join/index.wxml-->
-<view>
-  <button>注册/登录</button>
-</view>

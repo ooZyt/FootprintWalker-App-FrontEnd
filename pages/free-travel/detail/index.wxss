@@ -314,7 +314,7 @@ swiper {
   padding: 14rpx 60rpx;
   font-size: 36rpx;
   line-height: 56rpx;
-  background-color: #C5A1F7;
+  /*background-color: #C5A1F7;*/
 }
 .inform-button {
   padding: 6px 12px; /* 调整按钮大小 */

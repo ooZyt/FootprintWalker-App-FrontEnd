@@ -89,7 +89,9 @@ Page({
       success: (res) => {
         if (res.statusCode !== 200) {
           wx.showToast({
-            title: "验证码发送失败！"
+            title: "验证码发送失败！",
+            icon: 'none',
+            duration: 2000 // 提示框显示时间
           })
           return;
         } else {
@@ -141,6 +143,8 @@ Page({
         else{
           wx.showToast({
             title: '登陆失败',
+            icon: 'none',
+            duration: 2000 // 提示框显示时间
           })
           console.error('Login failed', res);
         }

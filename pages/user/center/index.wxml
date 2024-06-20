@@ -3,12 +3,12 @@
   <!-- 用户信息 -->
   <view class="user-card grey bg-white">
     <view class="basic">
-      <view class="avatar">
-        <open-data type="userAvatarUrl"></open-data>
+      <view class="avatar" bind:tap="chooseImage">
+        <image class="avatarImage" src="{{avatarUrl}}" mode="aspectFill"></image>
       </view>
       <view>
-        <view class="nickname black">
-          <open-data type="userNickName"></open-data>
+        <view class="nickname black" bind:tap="gotoUserInfo">
+          <view>{{userForm.name==""?"微信用户":userForm.name}}</view>
         </view>
         <view class="sex">
           <open-data lang="zh_CN" type="userGender"></open-data>
@@ -17,27 +17,31 @@
     </view>
     <view class="contact">
       <view class="tel">
-        15863008280
+        {{userForm.phoneNumber}}
         <view class="txt">手机号</view>
       </view>
       <view class="email">
-        15863008280@126.com
+        {{userForm.email}}
         <view class="txt">邮箱</view>
       </view>
     </view>
   </view>
-  <!-- 我的订单 -->
+  <!-- 我的报名 -->
   <view class="user-order bg-white">
     <view class="title">我的报名</view>
     <view class="content">
       <!-- 用来显示我本人的报名 -->
-      <scroll-view scroll-x="true" class="show-photo" wx:if="{{type==1}}">
-        <view class="allcat-photo" style="{{item.id!=6?'margin-right:16px;':'margin-right:27px;'}}" wx:for="{{allcat_url}}" data-id="{{item.id}}" bindtap="chooseCat">
-          <!--猫咪头像-->
-          <image class="lower-cat-photo {{cat_index==item.id?'lowerCat-photo-active':''}}" src="{{item.url}}" />
-          <!--打勾-->
-          <image class="hook-icon" src="../../static/icon/hook.png" wx:if="{{cat_index==item.id}}" />
-        </view>
+      <scroll-view scroll-x="true" class="show-photo">
+          <block wx:for="{{cards}}" wx:key="index">
+            <view class="card" bindtap="onCardTap" data-index="{{index}}">
+              <!-- Upper half: Image -->
+              <image class="card-image" src="{{item.path}}"></image>
+              <!-- Lower half: Title and Description -->
+              <view class="card-info">
+                <view class="card-title">{{item.title}}</view>
+              </view>
+            </view>
+          </block>
       </scroll-view>
     </view>
   </view>
@@ -48,15 +52,20 @@
       <text class="item-txt">我的收藏</text>
       <text class="iconfont icon-jinrujiantou"></text>
     </navigator>
-    <navigator class="li">
+    <view class="li" bind:tap="goToAboutus">
       <image class="item-icon" src="../../../icons/icon-info.png"></image>
       <text class="item-txt">关于我们</text>
       <text class="iconfont icon-jinrujiantou"></text>
-    </navigator>
+    </view>
     <navigator class="li">
       <image class="item-icon" src="../../../icons/icon-question.png"></image>
       <text class="item-txt">常见问题</text>
       <text class="iconfont icon-jinrujiantou"></text>
     </navigator>
+    <view class="li" bind:tap="showLogoutModal">
+      <image class="item-icon" src="../../../icons/icon-quit.png"></image>
+      <text class="item-txt">退出登陆</text>
+      <text class="iconfont icon-jinrujiantou"></text>
+    </view>
   </view>
 </view>

@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    //按钮相关数据
+    disabled:true,
+    buttonText: '已报名',
+    buttonColor: '',
+    //报名人信息活动信息相关数据
+    participantId:'',
     activityId: null,
+    isIn:0,
     activityDetails: {},
     leaderDetails:'',
     advisorMsg: "<p>在大家反馈中出现频率最高的活动地点它来啦！走过路过不要错过哦~</p>",
@@ -23,6 +30,86 @@ Page({
     
     // 在这里调用函数获取活动详情
     this.fetchActivityDetails(id);
+
+    const userId = wx.getStorageSync('userId');
+        if (userId) {
+            this.setData({
+              participantId: userId
+            });   
+            console.log('Retrieved userId:', this.data.participantId);
+            //获取该用户的参与状态
+            this.getParticipantState();
+            // 你可以在这里使用 userId 进行后续操作，例如加载用户数据
+        } else {
+            console.log('No userId found');
+            // 处理未找到 userId 的情况，例如跳转到登录页面
+        }
+
+        
+        // if(this.data.isIn==1){
+        //   this.setData({
+        //     buttonText: '已报名',
+        //     buttonColor: 'green'
+        //   }, () => {
+        //     console.log("Data updated: ", this.data);
+        //   });
+        // }else{
+        //   this.setData({
+        //     buttonText: '立即报名',
+        //     buttonColor: '#C5A1F7'
+        //   }, () => {
+        //     console.log("Data updated: ", this.data);
+        //   });
+        // }
+  },
+  getParticipantState: function(){
+    wx.request({
+      url: `http://localhost:9091/api/activity/activities/${this.data.activityId}/participants/${this.data.participantId}`, // 根据实际情况替换 URL
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: (res) => {
+        if (res.statusCode === 200) {
+          console.log("isIn?:"+res.data);
+          if(res.data=="Participant is in the activity's participant list"){
+            this.setData({
+              isIn: 1,
+              buttonText: '已报名',
+              buttonColor: 'green',
+              disabled:true,
+            }, () => {
+                  console.log("Data updated: ", this.data);
+                });
+            console.log("isIn?:"+this.data.isIn);
+          }
+          else{
+            this.setData({
+              isIn: 0,
+              buttonText: '立即报名',
+              buttonColor: '#C5A1F7',
+              disabled:false,
+            },() => {
+              console.log("Data updated: ", this.data);
+            });
+          }
+        } else {
+          wx.showToast({
+            title: '获取数据失败',
+            icon: 'none',
+            duration: 2000
+          });
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '网络请求失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    });
+
   },
   fetchActivityDetails: function (id) {
     // 假设您有一个获取活动详情的接口
@@ -131,7 +218,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    
   },
 
   /**
@@ -183,14 +270,40 @@ Page({
   },
 
   accept: function() {
-    this.setData({
-      showModal: false
-    });
-    wx.showToast({
-      title: '报名成功',
-      icon: 'none',
-      duration: 2000
-    });
+    const { activityId, participantId } = this.data;
+      // 调用后端接口
+      wx.request({
+        url: `http://localhost:9091/api/activity/activities/${activityId}/participants/${participantId}`,
+        method: 'PUT',
+        success: (res) => {
+          if (res.statusCode === 200) {
+            this.setData({
+              showModal: false
+            });
+            this.getParticipantState();
+            wx.showToast({
+              title: '报名成功',
+              icon: 'none',
+              duration: 2000
+            });
+          } else {
+            wx.showToast({
+              title: '报名失败，请重试',
+              icon: 'none',
+              duration: 2000
+            });
+          }
+        },
+        fail: (error) => {
+          wx.showToast({
+            title: '网络错误，请稍后重试',
+            icon: 'none',
+            duration: 2000
+          });
+          console.error('请求失败', error);
+        }
+      });
+
   },
 
   reject: function() {

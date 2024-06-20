@@ -1,12 +1,11 @@
-// /pages/register/register
+// /pages/userinfo/userinfo
 Page({
   data: {
     registerStyle: 0,        // 如果是0，代表是校内注册
     //用户填写的信息
     campus: "",              //用户校区
-    studentNumber: "",       //用户学号
     telephone: "",           //用户电话
-    email: "",               //用户邮箱
+    email:"",                //用户邮箱
     verifyCode: "",          //验证码
     password: "",            //用户的密码
     verifyPassword: "",      //确认密码
@@ -118,59 +117,57 @@ mapCollegeToInstitute(college) {
     return collegeMap[college] || null; // 返回对应的枚举值或者null
   },
 
-  register(){
+  update(){
     // 本函数用来进行注册
-    if(this.data.telephone===""||this.data.password===""){
+    if(this.data.telephone===""){
       wx.showToast({
-        title: '手机号或者登陆密码未填写',
+        title: '电话号码不能为空',
+        icon: 'none',
+        duration: 2000
       })
       return;
     }
 
-    if(this.data.password!==this.data.verifyPassword){
-      wx.showToast({
-        title: '两次输入密码不一致',
-      })
-      return;
-    }
+    // 首先读取个人id
+    const userId = wx.getStorageSync('userId');
 
     // 准备要发送的数据
     const memberData = {
-      id: this.data.studentNumber, // 确保是7位数字
+      id: userId, 
       university: this.data.registerStyle == 0 ? "同济大学":null,
       level: this.mapGradeToLevel(this.data.grade), // 需要实现 mapGradeToLevel 方法
       campus: this.mapCampusToEnum(this.data.campus), // 需要实现 mapCampusToEnum 方法
+      name: this.data.name,
       phoneNumber: this.data.telephone,
       email: this.data.email,
-      name: this.data.name,
       password: this.data.password,
       institute: this.mapCollegeToInstitute(this.data.college), // 需要实现 mapCollegeToInstitute 方法
       major: this.data.major
     };
 
     wx.request({
-      url: 'http://localhost:8090/api/human_management/members/register',
-      method: 'POST',
+      url: 'http://localhost:8090/api/human_management/members/'+userId,
+      method: 'PUT',
       data: memberData,
       header: {
         'Content-Type': 'application/json'
       },
       success: (res) => {
-        if(res.statusCode === 201){
-          console.log('Register successful', res.data);
+        if(res.statusCode === 20){
+          console.log('Update successful', res.data);
           // 登录成功的处理逻辑，可以存储 token 等
           // 示例：跳转到登陆页
           wx.navigateTo({
-            url: '/pages/login/login',
+            url: '/pages/user/center/index',
           })
         }
         else{
           wx.showToast({
-            title: '注册失败',
+            title: '更改失败',
             icon: 'none',
             duration: 2000
           })
-          console.error('Register failed', res);
+          console.error('Update failed', res);
         }
       },
       fail: () => {
@@ -181,6 +178,46 @@ mapCollegeToInstitute(college) {
         });
       }
     })
+  },
+
+  onLoad(){
+    // 首先读取个人信息
+    const userId = wx.getStorageSync('userId'); 
+
+    if(userId){
+      wx.request({
+        url: 'http://localhost:8090/api/human_management/members/'+userId,
+        method: 'GET',
+        header: {
+          'Content-Type': 'application/json'
+        },
+        success:(res) => {
+          if (res.statusCode === 200) {
+            this.setData({
+              name:res.data.name,
+              level:res.data.level,
+              campus:res.data.campus,
+              email:res.data.email,
+              telephone:res.data.phoneNumber,
+              instituteList:res.data.institute,
+              major:res.data.major
+            })
+          }
+          else{
+            wx.showToast({
+              title: '获取个人信息失败',
+              icon: 'none',
+              duration: 2000 // 提示框显示时间
+            })
+          }
+        }
+      })
+    } 
+    else{
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    }
   }
 
 })
