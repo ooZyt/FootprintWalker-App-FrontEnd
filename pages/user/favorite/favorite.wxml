@@ -1,0 +1,26 @@
+<!-- 列表 -->
+<view class="tab-content">
+  <view class="goods-list" wx:for="{{activities}}" wx:key="id">
+    <view class="li">
+      <navigator url="../../free-travel/detail/index?id={{item.id}}">
+        <view class="photo relative">
+          <view class="tag">{{item.activityStatus==='PUBLISHED'?'可报名':'已结束'}}</view>
+          <image mode="aspectFill" src="{{item.adImages.length > 0 ? item.adImages[0] : '../../../images/activity.png'}}"></image>
+          <text class="start-time white">{{item.startTime}}出发</text>
+        </view>
+        <view class="title-box black">
+          <view class="title">{{item.title}}</view>
+          <view class="info">
+            <view>
+              <text>地点</text> ·
+              <text>{{item.location}}</text>
+            </view>
+            <view class="share">
+              <text class="iconfont icon-fenxiang1"></text> {{item.participantIds.length}}
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>

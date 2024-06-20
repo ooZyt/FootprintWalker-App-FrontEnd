@@ -153,10 +153,10 @@ mapCollegeToInstitute(college) {
         'Content-Type': 'application/json'
       },
       success: (res) => {
-        if(res.statusCode === 20){
+        if(res.statusCode === 200){
           console.log('Update successful', res.data);
           // 登录成功的处理逻辑，可以存储 token 等
-          // 示例：跳转到登陆页
+          // 示例：跳转到个人信息页
           wx.navigateTo({
             url: '/pages/user/center/index',
           })

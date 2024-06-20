@@ -6,6 +6,7 @@ Page({
    */
   data: {
     //按钮相关数据
+    isFavorite: false,
     disabled:true,
     buttonText: '已报名',
     buttonColor: '',
@@ -44,6 +45,8 @@ Page({
             console.log('No userId found');
             // 处理未找到 userId 的情况，例如跳转到登录页面
         }
+    
+        this.isFavoriteOrNot()
 
         
         // if(this.data.isIn==1){
@@ -62,6 +65,124 @@ Page({
         //   });
         // }
   },
+
+  isFavoriteOrNot(){
+    // 请求接口判断刚开始是不是favorite
+    const userId = wx.getStorageSync('userId');
+    wx.request({
+      url: `http://localhost:9091/api/activity/activities/${this.data.activityId}/favorites/${userId}`,
+      method: 'GET',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: (res) => {
+        if(res.statusCode === 200){
+          console.log(res.data);
+          // 登录成功的处理逻辑，可以存储 token 等
+          if(res.data == "Favorite is in the activity's favorite list"){
+            this.setData({
+              isFavorite: true
+            })
+          }
+          else{
+            this.setData({
+              isFavorite:false
+            })
+          }
+        }
+        else{
+          wx.showToast({
+            title: '获取失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '网络请求失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    })
+  },
+
+  addFavorite(){
+    // 添加收藏
+    this.setData({
+      isFavorite:true
+    })
+
+    // 通过接口添加收藏
+    const userId = wx.getStorageSync('userId');
+    wx.request({
+      url: `http://localhost:9091/api/activity/activities/${this.data.activityId}/favorites/${userId}`,
+      method: 'PUT',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: (res) => {
+        if(res.statusCode === 200){
+          console.log('Add favorite successful', res.data);
+          // 登录成功的处理逻辑，可以存储 token 等
+        }
+        else{
+          wx.showToast({
+            title: '添加失败',
+            icon: 'none',
+            duration: 2000
+          })
+          console.error('Add failed', res);
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '网络请求失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    })
+  },
+
+  removeFavorite(){
+    // 去除收藏
+    this.setData({
+      isFavorite:false
+    })
+
+    const userId = wx.getStorageSync('userId');
+    wx.request({
+      url: `http://localhost:9091/api/activity/activities/${this.data.activityId}/favorites/${userId}`,
+      method: 'DELETE',
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: (res) => {
+        if(res.statusCode === 200){
+          console.log('Delete favorite successful', res.data);
+          // 登录成功的处理逻辑，可以存储 token 等
+        }
+        else{
+          wx.showToast({
+            title: '删除失败',
+            icon: 'none',
+            duration: 2000
+          })
+          console.error('Delete failed', res);
+        }
+      },
+      fail: () => {
+        wx.showToast({
+          title: '网络请求失败',
+          icon: 'none',
+          duration: 2000
+        });
+      }
+    })
+  },
+
   getParticipantState: function(){
     wx.request({
       url: `http://localhost:9091/api/activity/activities/${this.data.activityId}/participants/${this.data.participantId}`, // 根据实际情况替换 URL

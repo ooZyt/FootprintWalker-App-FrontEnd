@@ -168,7 +168,7 @@
 }
 
 .card-title {
-  font-weight: bold;
+  font-size: 20rpx;
 }
 
 .card-description {

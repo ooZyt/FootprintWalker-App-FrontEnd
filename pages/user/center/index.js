@@ -31,6 +31,12 @@ Page({
     })
   },
 
+  goToFavorite(){
+    wx.navigateTo({
+      url: '/pages/user/favorite/favorite',
+    })
+  },
+
   gotoUserInfo(){
     wx.navigateTo({
       url: '/pages/user/userinfo/userinfo',
@@ -132,6 +138,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    this.setData({
+      cards: []
+    })
+
     // 首先读取个人信息
     const userId = wx.getStorageSync('userId'); 
 

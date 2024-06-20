@@ -119,7 +119,9 @@
   <view class="bottom-bar">
 
     <view>
-      <text class="iconfont icon-shoucang1"></text>
+      <image style="width: 50rpx;height: 50rpx;" src="../../../icons/favorite.png" wx:if="{{isFavorite == false}}" bind:tap="addFavorite"></image>
+      <image style="width: 50rpx;height: 50rpx;" src="../../../icons/favorite-select.png" wx:if="{{isFavorite == true}}" bind:tap="removeFavorite"></image>
+      <!-- <text class="iconfont icon-shoucang1"></text> -->
       <view class="grey">收藏</view>
     </view>
     <button class="btn" type="primary" bindtap="showDialog" style="background-color: {{buttonColor}}" disabled="{{disabled}}">{{buttonText}}</button>

@@ -4,6 +4,7 @@
     "pages/register/register",
     "pages/findpassword/findpassword",
     "pages/user/center/index",
+    "pages/user/favorite/favorite",
     "pages/user/userinfo/userinfo",
     "pages/story/detail/index",
     "pages/story/comment/index",

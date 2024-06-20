@@ -47,21 +47,16 @@
   </view>
   <!-- 菜单栏 -->
   <view class="menu-list bg-white">
-    <navigator class="li">
+    <view class="li" bind:tap="goToFavorite">
       <image class="item-icon" src="../../../icons/icon-fav.png"></image>
       <text class="item-txt">我的收藏</text>
       <text class="iconfont icon-jinrujiantou"></text>
-    </navigator>
+    </view>
     <view class="li" bind:tap="goToAboutus">
       <image class="item-icon" src="../../../icons/icon-info.png"></image>
       <text class="item-txt">关于我们</text>
       <text class="iconfont icon-jinrujiantou"></text>
     </view>
-    <navigator class="li">
-      <image class="item-icon" src="../../../icons/icon-question.png"></image>
-      <text class="item-txt">常见问题</text>
-      <text class="iconfont icon-jinrujiantou"></text>
-    </navigator>
     <view class="li" bind:tap="showLogoutModal">
       <image class="item-icon" src="../../../icons/icon-quit.png"></image>
       <text class="item-txt">退出登陆</text>
